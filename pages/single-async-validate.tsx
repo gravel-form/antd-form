@@ -1,0 +1,122 @@
+import * as React from 'react';
+import Layout from '../layouts/main';
+import { NextPage } from 'next';
+
+import DemoForm from '../components/DemoForm';
+
+const code = `const Promise= Bluebird;
+const { useAsync } = ReactAsyncHook;
+const { Form: AntdForm } = Antd;
+const ajv = new Ajv({
+  errorDataPath: 'property',
+  allErrors: true,
+  multipleOfPrecision: 8,
+  schemaId: 'auto',
+  unknownFormats: 'ignore',
+});
+
+async function waitForStopTyping(data, focused) {
+  if (!focused) return null;
+  await Promise.delay(500);
+  return data;
+}
+
+async function asyncValidate(dataToSend, schema) {
+  if (!dataToSend) return null;
+  await Promise.delay(2000);
+  ajv.validate(schema, dataToSend);
+  return ajv.errors;
+}
+
+const ExampleSignleAsyncValidateMw = (props) => {
+  const { schema, data, parent, dataPath, next, extraProps } = props;
+  const touched = React.useRef(false);
+  const focused = React.useRef(false);
+
+  const { loading: typing, result: dataToSend } = useAsync(
+    waitForStopTyping,
+    [data, focused.current],
+    { executeOnUpdate: true }
+  );
+
+  const { loading: validating, result: errors } = useAsync(
+    asyncValidate,
+    [dataToSend, schema],
+    { executeOnUpdate: true }
+  );
+
+  if (
+    typeof schema === 'boolean' ||
+    schema.type === 'object' ||
+    schema.type === 'array' ||
+    (parent && typeof parent.schema !== 'boolean' && parent.schema.type === 'array')
+  )
+    return next(props);
+
+  const error = errors && errors[0];
+
+  const onFocus = () => (touched.current = focused.current = true);
+  const onBlur = () => (focused.current = false);
+  const status = (validating && 'validating') || (error && 'error') || (!typing && touched.current && 'success') || '';
+
+  return (
+    <AntdForm.Item
+      label={\`\${schema.title || dataPath[dataPath.length - 1]}\${typing ? ' typing' : ''} \`}
+      extra={schema.description}
+      hasFeedback
+      {...(error && { help: error.message })}
+      validateStatus={status}
+    >
+      {next({
+        ...props,
+        extraProps: {
+          ...extraProps,
+          props: {
+            ...(extraProps || {}).props,
+            onFocus,
+            onBlur,
+          },
+        },
+      })}
+    </AntdForm.Item>
+  );
+};
+
+const middlewares = [...schemaMws, ExampleSignleAsyncValidateMw, InputMw, NotSupported];
+
+const schema = {
+  type: 'object',
+  title: 'Form',
+  properties: {
+    number_1: {
+      type: 'string',
+      description: 'Max length 5',
+      title: 'String 1',
+      maxLength: 5,
+    },
+    number_2: {
+      type: 'string',
+      description: 'Min length 5',
+      title: 'String 2',
+      minLength: 5,
+    },
+  },
+};
+
+render(
+  <Form
+    schema={schema}
+    middlewares={middlewares}
+  />
+);
+`;
+
+const IndexPage: NextPage = () => {
+  return (
+    <Layout>
+      <DemoForm code={code} />
+    </Layout>
+  );
+};
+
+export default IndexPage;
