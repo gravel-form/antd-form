@@ -19,11 +19,12 @@ interface ErrorsProps {
 }
 
 export function validate(schema: JSONSchema7, data: any) {
+  console.log(schema.properties && Object.keys(schema.properties));
   ajv.validate(schema, data);
   return ajv.errors;
 }
 
-export const ValidateRmw: React.FC<FormMiddlewareProps & ErrorsProps> = (props) => {
+export const ValidateMw: React.FC<FormMiddlewareProps & ErrorsProps> = (props) => {
   const { schema, data, next, parent } = props;
   const [errors, ajvException] = React.useMemo(() => {
     try {
@@ -43,4 +44,4 @@ export const ValidateRmw: React.FC<FormMiddlewareProps & ErrorsProps> = (props) 
   );
 };
 
-export default ValidateRmw;
+export default ValidateMw;

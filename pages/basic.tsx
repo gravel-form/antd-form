@@ -79,8 +79,12 @@ const extraProps = {
 };
 
 const middlewares = [
-  SubmitButtonRmw,
-  ValidateRmw,
+  FormDataViewerMw,
+
+  // SubmitButtonMw,
+  // ValidateMw,
+  SubmitButtonWithValidationMw,
+
   ExtraPropsMw,
   ColMw,
   FieldsetTemplateMw,
@@ -102,6 +106,7 @@ const middlewares = [
 
 render(
   <Form
+    defaultData={{}}
     layout="vertical"
     schema={schema}
     extraProps={extraProps}

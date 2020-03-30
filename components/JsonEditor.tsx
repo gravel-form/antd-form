@@ -4,7 +4,6 @@ import { Input } from 'antd';
 const JsonEditor: React.FC<{ value: any; onChange?: any }> = ({ value, onChange }) => {
   const [editingValue, setEditingValue] = React.useState('');
   const [focus, setFocus] = React.useState(false);
-  console.log(value);
   return (
     <Input.TextArea
       value={focus ? editingValue : JSON.stringify(value, null, 2)}
@@ -16,7 +15,7 @@ const JsonEditor: React.FC<{ value: any; onChange?: any }> = ({ value, onChange 
       onBlur={() => {
         try {
           onChange(JSON.parse(editingValue));
-        } catch (e) { }
+        } catch (e) {}
       }}
       autoSize
     />

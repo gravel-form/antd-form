@@ -9,16 +9,16 @@ import ExtraPropsMw from './ExtraPropsMw';
 import FormItemTemplateMw from './FormItemTemplateMw';
 import ValidateRMw from './ValidateRmw';
 import NotSupported from './NotSupported';
-import ErrorListRmw from './ErrorListRmw';
+import ErrorListMw from './ErrorListRmw';
 import InputMw, { TextAreaMw } from './Input';
 import InputNumberMw from './InputNumber';
 import FieldsetTemplateMw from './FieldsetTemplateMw';
 import CheckboxGroupMw from './CheckboxGroup';
 import SelectMw from './Select';
-import SubmitButtonRmw from './SubmitButtonRmw';
+import SubmitButtonMw from './SubmitButtonRmw';
 
 export const preset = [
-  SubmitButtonRmw,
+  SubmitButtonMw,
   ValidateRMw,
   // RootErrorListMw,
   ExtraPropsMw,

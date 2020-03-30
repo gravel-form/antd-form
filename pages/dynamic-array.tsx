@@ -66,8 +66,7 @@ const ExampleDynamicArrayMw = (props) => {
 };
 
 const schema = {
-  title: 'A registration form',
-  description: 'A simple dynamic array form.',
+  title: 'A simple dynamic array form',
   type: 'array',
   items: {
     type: 'object',
@@ -84,30 +83,20 @@ const schema = {
   },
 };
 
-const extraProps = {};
-
 const middlewares = [
+  FormDataViewerMw,
   ExtraPropsMw,
   FieldsetTemplateMw,
   ...schemaMws,
-
-  FormItemTemplateMw,
   ExampleDynamicArrayMw,
-
-  CheckboxGroupMw,
-  TextAreaMw,
-  PasswordMw,
-  DatePickerMw,
-  SelectMw,
+  FormItemTemplateMw,
   InputMw,
-  InputNumberMw,
   NotSupported,
 ];
 
 render(
   <Form
     schema={schema}
-    extraProps={extraProps}
     middlewares={middlewares}
   />
 );

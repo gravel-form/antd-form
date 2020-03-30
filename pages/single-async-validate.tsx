@@ -82,7 +82,12 @@ const ExampleSignleAsyncValidateMw = (props) => {
   );
 };
 
-const middlewares = [...schemaMws, ExampleSignleAsyncValidateMw, InputMw, NotSupported];
+const middlewares = [
+  ...schemaMws,
+  ExampleSignleAsyncValidateMw,
+  InputMw,
+  NotSupported
+];
 
 const schema = {
   type: 'object',

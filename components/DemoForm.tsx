@@ -8,15 +8,15 @@ import { FixedObjectMw, FixedArrayMw, schemaMws } from '../middlewares/share';
 import DatePickerMw from '../middlewares/DatePicker';
 import ExtraPropsMw from '../middlewares/ExtraPropsMw';
 import FormItemTemplateMw from '../middlewares/FormItemTemplateMw';
-import ValidateRmw from '../middlewares/ValidateRmw';
+import ValidateMw from '../middlewares/ValidateMw';
 import NotSupported from '../middlewares/NotSupported';
-import ErrorListRmw from '../middlewares/ErrorListRmw';
+import ErrorListMw from '../middlewares/ErrorListMw';
 import InputMw, { TextAreaMw, PasswordMw } from '../middlewares/Input';
 import InputNumberMw from '../middlewares/InputNumber';
 import FieldsetTemplateMw from '../middlewares/FieldsetTemplateMw';
 import CheckboxGroupMw from '../middlewares/CheckboxGroup';
 import SelectMw from '../middlewares/Select';
-import SubmitButtonRmw from '../middlewares/SubmitButtonRmw';
+import { SubmitButtonMw, SubmitButtonWithValidationMw } from '../middlewares/SubmitButtonMw';
 import RadioGroupMw from '../middlewares/RadioGroupMw';
 import CheckboxMw from '../middlewares/CheckboxMw';
 import SwitchMw from '../middlewares/SwitchMw';
@@ -25,12 +25,15 @@ import { RowMw, ColMw } from '../middlewares/GridMw';
 
 import { LiveProvider, LiveEditor, LiveError, LivePreview } from 'react-live';
 
+import FormDataViewerMw from '../components/FormDataViewerMw';
+
 const map: any = {
   schemaMws,
-  SubmitButtonRmw,
-  ValidateRmw,
+  SubmitButtonMw,
+  SubmitButtonWithValidationMw,
+  ValidateMw,
   ExtraPropsMw,
-  ErrorListRmw,
+  ErrorListMw,
 
   RowMw,
   ColMw,
@@ -62,6 +65,9 @@ const map: any = {
   InputMw,
 
   NotSupported,
+
+  // dev
+  FormDataViewerMw,
 };
 
 const DemoForm: React.FC<{ code: string; scope?: { [key: string]: any } | React.ReactElement }> = ({ code, scope }) => {
@@ -108,17 +114,6 @@ const DemoForm: React.FC<{ code: string; scope?: { [key: string]: any } | React.
       </Col>
     </Row>
   );
-};
-
-const formItemLayout = {} || {
-  labelCol: {
-    xs: { span: 24 },
-    sm: { span: 5 },
-  },
-  wrapperCol: {
-    xs: { span: 24 },
-    sm: { span: 12 },
-  },
 };
 
 export default DemoForm;
