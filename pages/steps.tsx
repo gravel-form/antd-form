@@ -125,7 +125,7 @@ const middlewares = [
   ExtraPropsMw,
   ...schemaMws,
   FormItemTemplateMw,
-  DatePickerMw,
+  ...withName([[ 'DatePicker', DatePickerMw ]]),
   InputMw,
   NotSupported,
 ];

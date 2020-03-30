@@ -91,15 +91,20 @@ const middlewares = [
   RowMw,
   ...schemaMws,
   FormItemTemplateMw,
-  CheckboxMw,
-  RadioGroupMw,
+
+  ...withName([
+    [ 'DatePicker', DatePickerMw ],
+    [ 'Rate', RateMw ],
+    [ 'Switch', SwitchMw ],
+    [ 'TextArea', TextAreaMw ],
+    [ 'Password', PasswordMw ],
+    [ 'RadioGroup', RadioGroupMw ],
+  ]),
+
   CheckboxGroupMw,
-  TextAreaMw,
-  PasswordMw,
-  DatePickerMw,
+  CheckboxMw,
   SelectMw,
   InputMw,
-  RateMw,
   InputNumberMw,
   NotSupported,
 ];

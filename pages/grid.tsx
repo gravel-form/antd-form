@@ -6,6 +6,7 @@ import DemoForm from '../components/DemoForm';
 
 const code = `const schema = {
   type: 'object',
+  title: 'Grid Demo',
   properties: {
     input1: { type: 'string' },
     input2: { type: 'string' },
@@ -40,7 +41,14 @@ const extraProps = {
     input4: { col: { span: 7 } },
     input5: { col: { span: 7 } },
     object1: { col: { span: 11 } },
-    object2: { col: { span: 11 } },
+    object2: {
+      col: { span: 11 },
+      row: { justify: 'space-between' },
+      properties: {
+        o2_i1: { col: { span: 11 } },
+        o2_i2: { col: { span: 11 } },
+      },
+    },
   },
 };
 

@@ -14,7 +14,7 @@ const ExampleCalculatedFieldMw = (props) => {
   if (typeof schema === 'boolean' || schema.type !== 'object') return next(props);
 
   const handleChange = (value) => {
-    const { firstName, lastName } = data;
+    const { firstName, lastName } = data || {};
     if (typeof value !== 'string') {
       onChange({ ...data, firstName: null, lastName: null });
     } else if (value.startsWith(firstName + ' ')) {

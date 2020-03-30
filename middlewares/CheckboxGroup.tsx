@@ -1,5 +1,5 @@
 import * as React from 'react';
-import _ from 'lodash';
+import get from 'lodash/get';
 import { Checkbox } from 'antd';
 import { AntdFormMiddlewareProps } from './share';
 
@@ -24,7 +24,7 @@ export const CheckboxGroupMw: React.ComponentType<AntdFormMiddlewareProps> = (pr
       options={checkboxValues.map((value) => ({ label: value as string, value: value as string }))}
       value={data}
       onChange={(value) => onChange(value)}
-      {..._.get(extraProps, 'props')}
+      {...get(extraProps, 'props')}
     />
   );
 };

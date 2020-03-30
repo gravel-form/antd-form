@@ -1,15 +1,5 @@
 import { ErrorObject as _ErrorObject } from './ValidateMw';
-import {
-  // FormCore,
-  // FixedObjectArrayMw,
-  // useAdditional,
-  // schemaMws,
-  FormMiddlewareProps,
-  // AdditionalItemTemplateProps,
-  // isRequired,
-  // toJSONSchemaPath,
-  FormProps,
-} from '../core/src';
+import { FormMiddlewareProps, FormProps } from '../core/src';
 import { FormProps as AntdFP } from 'antd/lib/form';
 
 export type ErrorObject = _ErrorObject;

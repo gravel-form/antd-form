@@ -1,5 +1,5 @@
 import * as React from 'react';
-import _ from 'lodash';
+import get from 'lodash/get';
 import { Checkbox } from 'antd';
 import { AntdFormMiddlewareProps } from './share';
 
@@ -8,7 +8,7 @@ export const RadioGroupMw: React.ComponentType<AntdFormMiddlewareProps> = (props
   if (typeof schema === 'boolean' || schema.type !== 'boolean') return next(props);
 
   return (
-    <Checkbox checked={data} onChange={(e) => onChange(e.target.checked || undefined)} {..._.get(extraProps, 'props')}>
+    <Checkbox checked={data} onChange={(e) => onChange(e.target.checked || undefined)} {...get(extraProps, 'props')}>
       {schema.title}
     </Checkbox>
   );

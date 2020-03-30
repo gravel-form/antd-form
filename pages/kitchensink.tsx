@@ -5,8 +5,7 @@ import { NextPage } from 'next';
 import DemoForm from '../components/DemoForm';
 
 const code = `const schema = {
-  title: 'A registration form',
-  description: 'A simple form example.',
+  title: 'Demo of all available widgets',
   type: 'object',
   properties: {
     input: {
@@ -74,22 +73,26 @@ const extraProps = {
 };
 
 const middlewares = [
-  SubmitButtonRmw,
-  ValidateRmw,
+  SubmitButtonMw,
+  ValidateMw,
   ExtraPropsMw,
   FieldsetTemplateMw,
   ...schemaMws,
   FormItemTemplateMw,
-  SwitchMw,
-  CheckboxMw,
-  RadioGroupMw,
+
+  ...withName([
+    [ 'DatePicker', DatePickerMw ],
+    [ 'Rate', RateMw ],
+    [ 'Switch', SwitchMw ],
+    [ 'TextArea', TextAreaMw ],
+    [ 'Password', PasswordMw ],
+    [ 'RadioGroup', RadioGroupMw ],
+  ]),
+
   CheckboxGroupMw,
-  TextAreaMw,
-  PasswordMw,
-  DatePickerMw,
+  CheckboxMw,
   SelectMw,
   InputMw,
-  RateMw,
   InputNumberMw,
   NotSupported,
 ];

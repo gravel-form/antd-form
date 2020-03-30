@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Card, Row, Col } from 'antd';
 
-import Form from '../Form';
+import Form, { withName } from '../Form';
 
 import { FixedObjectMw, FixedArrayMw, schemaMws } from '../middlewares/share';
 
@@ -77,6 +77,7 @@ const DemoForm: React.FC<{ code: string; scope?: { [key: string]: any } | React.
         code={code}
         scope={{
           Form,
+          withName,
           ...map,
           Ajv: require('ajv'),
           Antd: require('antd'),

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import _ from 'lodash';
+import get from 'lodash/get';
 import { InputNumber } from 'antd';
 import { AntdFormMiddlewareProps } from './share';
 
@@ -12,7 +12,7 @@ export const InputNumberMw: React.ComponentType<AntdFormMiddlewareProps> = (prop
       type="number"
       value={data || ''}
       onChange={(value) => onChange(value)}
-      {..._.get(extraProps, 'props')}
+      {...get(extraProps, 'props')}
     />
   );
 };

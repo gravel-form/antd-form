@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { AntdFormProps, FormCore } from './middlewares/share';
+import get from 'lodash/get';
+import { AntdFormProps, FormCore, AntdFormMiddlewareProps } from './middlewares/share';
 import { Form as AntdForm } from 'antd';
 
 const Form: React.FC<AntdFormProps> = (props) => {
@@ -21,5 +22,15 @@ const Form: React.FC<AntdFormProps> = (props) => {
     </AntdForm>
   );
 };
+
+export function withName(list: [string, React.FC<AntdFormMiddlewareProps>][]): React.FC<AntdFormMiddlewareProps>[] {
+  return list.map(([name, Component]) => {
+    const C: React.FC<AntdFormMiddlewareProps> = (props: AntdFormMiddlewareProps) => {
+      if (get(props.extraProps, 'component') !== name) return props.next(props);
+      return <Component {...props} />;
+    };
+    return C;
+  });
+}
 
 export default Form;

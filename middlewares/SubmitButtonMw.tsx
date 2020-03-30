@@ -1,5 +1,5 @@
 import * as React from 'react';
-import _ from 'lodash';
+import get from 'lodash/get';
 import { Form, Button, Alert } from 'antd';
 import { AntdFormMiddlewareProps } from './share';
 import { ErrorObject, validate } from './ValidateMw';
@@ -16,7 +16,7 @@ export const SubmitButtonMw: React.ComponentType<AntdFormMiddlewareProps> = (pro
     <>
       {props.next(props)}
       <Form.Item>
-        <Button onClick={onSubmit} type="primary" {..._.get(extraProps, 'props')}>
+        <Button onClick={onSubmit} type="primary" {...get(extraProps, 'props')}>
           Submit
         </Button>
       </Form.Item>
@@ -53,7 +53,7 @@ export const SubmitButtonWithValidationMw: React.ComponentType<AntdFormMiddlewar
     <>
       {props.next(errors === props.errors ? props : { ...props, errors })}
       <Form.Item>
-        <Button onClick={handleClick} type="primary" {..._.get(extraProps, 'props')}>
+        <Button onClick={handleClick} type="primary" {...get(extraProps, 'props')}>
           Submit
         </Button>
       </Form.Item>

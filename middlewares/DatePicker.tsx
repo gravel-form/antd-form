@@ -1,5 +1,5 @@
 import * as React from 'react';
-import _ from 'lodash';
+import get from 'lodash/get';
 import { DatePicker } from 'antd';
 import { AntdFormMiddlewareProps } from './share';
 import moment from 'moment';
@@ -7,8 +7,7 @@ import moment from 'moment';
 export const DatePickerMw: React.ComponentType<AntdFormMiddlewareProps> = (props) => {
   const { next, schema, data, onChange, extraProps } = props;
 
-  if (typeof schema === 'boolean' || schema.type !== 'string' || _.get(extraProps, 'component') !== 'DatePicker')
-    return next(props);
+  if (typeof schema === 'boolean' || schema.type !== 'string') return next(props);
 
   return (
     <DatePicker
@@ -17,7 +16,7 @@ export const DatePickerMw: React.ComponentType<AntdFormMiddlewareProps> = (props
       onChange={(_, dateString) => {
         onChange(dateString || undefined);
       }}
-      {..._.get(extraProps, 'props')}
+      {...get(extraProps, 'props')}
     />
   );
 };

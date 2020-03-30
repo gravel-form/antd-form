@@ -1,15 +1,14 @@
 import * as React from 'react';
-import _ from 'lodash';
+import get from 'lodash/get';
 import { Switch } from 'antd';
 import { AntdFormMiddlewareProps } from './share';
 
 export const SwitchMw: React.ComponentType<AntdFormMiddlewareProps> = (props) => {
   const { schema, onChange, data, next, extraProps } = props;
-  if (typeof schema === 'boolean' || schema.type !== 'boolean' || _.get(extraProps, 'component') !== 'Switch')
-    return next(props);
+  if (typeof schema === 'boolean' || schema.type !== 'boolean') return next(props);
 
   return (
-    <Switch title={schema.title} checked={data} onChange={(value) => onChange(value)} {..._.get(extraProps, 'props')} />
+    <Switch title={schema.title} checked={data} onChange={(value) => onChange(value)} {...get(extraProps, 'props')} />
   );
 };
 

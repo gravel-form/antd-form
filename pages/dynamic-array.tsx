@@ -1,10 +1,10 @@
 import * as React from 'react';
-import _ from 'lodash';
 import Layout from '../layouts/main';
 import { NextPage } from 'next';
 import DemoForm from '../components/DemoForm';
 
-const code = `const { Button, Row, Col } = Antd;
+const code = `const _ = Lodash;
+const { Button, Row, Col } = Antd;
 const ExampleDynamicArrayMw = (props) => {
   const {
     schema,
@@ -96,6 +96,9 @@ const middlewares = [
 
 render(
   <Form
+    defaultData={[
+      { firstName: 'Jhon', lastName: 'Smith' },
+    ]}
     schema={schema}
     middlewares={middlewares}
   />
