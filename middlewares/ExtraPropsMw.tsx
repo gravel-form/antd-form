@@ -8,8 +8,8 @@ export const ExtraPropsMw: React.ComponentType<AntdFormMiddlewareProps> = (props
     schemaPath,
     formProps: { extraProps },
   } = props;
-  const ep = get(extraProps, schemaPath);
-  return ep ? next({ ...props, extraProps: ep }) : next(props);
+  const ep = schemaPath.length ? get(extraProps, schemaPath) : extraProps;
+  return ep === props.extraProps ? next(props) : next({ ...props, extraProps: ep });
 };
 
 export default ExtraPropsMw;

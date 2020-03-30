@@ -21,6 +21,7 @@ import RadioGroupMw from '../middlewares/RadioGroupMw';
 import CheckboxMw from '../middlewares/CheckboxMw';
 import SwitchMw from '../middlewares/SwitchMw';
 import RateMw from '../middlewares/RateMw';
+import { RowMw, ColMw } from '../middlewares/GridMw';
 
 import { LiveProvider, LiveEditor, LiveError, LivePreview } from 'react-live';
 
@@ -31,6 +32,8 @@ const map: any = {
   ExtraPropsMw,
   ErrorListRmw,
 
+  RowMw,
+  ColMw,
   FieldsetTemplateMw,
   FormItemTemplateMw,
   FixedObjectMw,

@@ -59,7 +59,10 @@ const code = `const schema = {
 };
 
 const extraProps = {
+  row: { justify: 'space-between' },
   properties: {
+    firstName: { col: { span:11 } },
+    lastName: { col: { span:11 } },
     bio: {
       component: 'TextArea',
       props: {
@@ -71,8 +74,7 @@ const extraProps = {
     },
     dof: {
       component: 'DatePicker',
-    },
-    age: { component: 'Rate' },
+    }
   },
 };
 
@@ -80,7 +82,9 @@ const middlewares = [
   SubmitButtonRmw,
   ValidateRmw,
   ExtraPropsMw,
+  ColMw,
   FieldsetTemplateMw,
+  RowMw,
   ...schemaMws,
   FormItemTemplateMw,
   CheckboxMw,

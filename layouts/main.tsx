@@ -34,6 +34,9 @@ const Page: React.FC = ({ children }) => {
           <Menu.Item key="/kitchensink">
             <span className="">Kitchen Sink</span>
           </Menu.Item>
+          <Menu.Item key="/grid">
+            <span className="nav-text">Grid</span>
+          </Menu.Item>
           <Menu.Item key="/single-async-validate">
             <span className="">Single Field Async</span>
           </Menu.Item>

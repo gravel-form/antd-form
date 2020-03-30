@@ -1,10 +1,12 @@
 import * as React from 'react';
 import { FormMiddlewareProps } from './share';
-import { Typography } from 'antd';
+import { Typography, Row } from 'antd';
 const { Text } = Typography;
 
 export const FieldsetTemplateMw: React.ComponentType<FormMiddlewareProps> = (props) => {
   const { schema, next } = props;
+
+  console.log(schema);
   if (typeof schema === 'boolean' || !(schema.type === 'object' || schema.type === 'array')) return next(props);
 
   const title = schema.title;
