@@ -7,8 +7,6 @@ export const FieldsetTemplateMw: React.ComponentType<FormMiddlewareProps> = (pro
   const { schema, next } = props;
   if (typeof schema === 'boolean' || !(schema.type === 'object' || schema.type === 'array')) return next(props);
 
-  if (typeof schema === 'boolean') return next(props);
-
   const title = schema.title;
   return (
     <fieldset>

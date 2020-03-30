@@ -9,14 +9,23 @@ const code = `const schema = {
   description: 'A simple form example.',
   type: 'object',
   required: ['firstName', 'lastName'],
-  properties: {
+  definitions: {
     firstName: {
       type: 'string',
       title: 'First name',
     },
     lastName: {
+      $id: '#last-name',
       type: 'string',
       title: 'Last name',
+    },
+  },
+  properties: {
+    firstName: {
+      $ref: "#/definitions/firstName",
+    },
+    lastName: {
+      $ref: '#last-name',
     },
     age: {
       type: 'integer',
@@ -89,6 +98,7 @@ const middlewares = [
 
 render(
   <Form
+    layout="vertical"
     schema={schema}
     extraProps={extraProps}
     middlewares={middlewares}

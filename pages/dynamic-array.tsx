@@ -1,13 +1,10 @@
 import * as React from 'react';
 import _ from 'lodash';
-import { JSONSchema7Definition } from 'json-schema';
 import Layout from '../layouts/main';
 import { NextPage } from 'next';
 import DemoForm from '../components/DemoForm';
-import { AntdFormMiddlewareProps } from '../middlewares/share';
 
-const code = `
-const { Button, Icon, Row, Col } = Antd;
+const code = `const { Button, Row, Col } = Antd;
 const ExampleDynamicArrayMw = (props) => {
   const {
     schema,
@@ -33,7 +30,7 @@ const ExampleDynamicArrayMw = (props) => {
     <>
       {dataItems.map((item, index) => {
         return (
-          <Row>
+          <Row key={index}>
             <Col span="21">
               <MiddlewareComponent
                 key={index}
@@ -52,7 +49,7 @@ const ExampleDynamicArrayMw = (props) => {
               />
             </Col>
             <Col span="3">
-              <Button type="danger" icon="delete" onClick={() => onChange(dataItems.filter((_, i) => i !== index))} />
+              <Button style={{float:'right'}} type="dashed" shape="circle" onClick={() => onChange(dataItems.filter((_, i) => i !== index))}  >X</Button>
             </Col>
           </Row>
         );
@@ -60,7 +57,7 @@ const ExampleDynamicArrayMw = (props) => {
       {
         <Row>
           <Button type="dashed" onClick={() => onChange([...dataItems, null])} style={{ width: '100%' }}>
-            <Icon type="plus" /> Add field
+            + Add field
           </Button>
         </Row>
       }

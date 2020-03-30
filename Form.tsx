@@ -13,8 +13,10 @@ const Form: React.FC<AntdFormProps> = (props) => {
     onChange && onChange(newData);
   };
 
+  const { colon, hideRequiredMark, labelAlign, labelCol, layout, name, size } = props;
+
   return (
-    <AntdForm>
+    <AntdForm {...{ colon, hideRequiredMark, labelAlign, labelCol, layout, name, size }}>
       <FormCore {...props} onChange={handleChange} data={data} />
     </AntdForm>
   );

@@ -1,6 +1,7 @@
 import React from 'react';
 import Ajv from 'ajv';
 import { JSONSchema7 } from 'json-schema';
+import { Alert } from 'antd';
 import { FormMiddlewareProps } from '../core/src';
 
 const ajv = new Ajv({
@@ -24,12 +25,22 @@ export function validate(schema: JSONSchema7, data: any) {
 
 export const ValidateRmw: React.FC<FormMiddlewareProps & ErrorsProps> = (props) => {
   const { schema, data, next, parent } = props;
-  const errors = React.useMemo(() => (parent || typeof schema === 'boolean' ? null : validate(schema, data)), [
-    schema,
-    data,
-  ]);
+  const [errors, ajvException] = React.useMemo(() => {
+    try {
+      return [parent || typeof schema === 'boolean' ? null : validate(schema, data), null];
+    } catch (err) {
+      return [null, err];
+    }
+  }, [schema, data]);
   const newProps = React.useMemo(() => ({ ...props, errors }), [errors, props]);
-  return next(errors ? newProps : props);
+  return ajvException ? (
+    <>
+      <Alert message="Ajv exception" description={ajvException.message} type="error" showIcon />
+      {next(props)}
+    </>
+  ) : (
+    next(errors ? newProps : props)
+  );
 };
 
 export default ValidateRmw;

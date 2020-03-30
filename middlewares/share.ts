@@ -18,7 +18,7 @@ export * from '../core/src';
 
 export interface AntdFormProps
   extends FormProps,
-    Pick<AntdFP, 'colon' | 'hideRequiredMark' | 'labelAlign' | 'labelCol' | 'layout' | 'name'> {
+    Pick<AntdFP, 'colon' | 'hideRequiredMark' | 'labelAlign' | 'labelCol' | 'layout' | 'name' | 'size'> {
   onSubmit?: (data: unknown) => void;
   extraProps?: unknown;
   defaultData?: unknown;
