@@ -8,24 +8,14 @@ const code = `const schema = {
   title: 'Demo of all available widgets',
   type: 'object',
   properties: {
-    input: {
-      type: 'string',
-    },
-    textarea: {
-      type: 'string',
-    },
-    date: {
-      type: 'string',
-    },
-    password: {
-      type: 'string',
-    },
-    number: {
-      type: 'number',
-    },
-    rate: {
-      type: 'number',
-    },
+    input: { type: 'string' },
+    textarea: { type: 'string' },
+    date: { type: 'string' },
+    time: { type: 'string' },
+    password: { type: 'string' },
+    number: { type: 'number' },
+    rate: { type: 'number' },
+    slider: { type: 'integer', minimum: 0, maximum: 100 },
     select: {
       type: 'string',
       enum: ['foo', 'bar', 'baz'],
@@ -34,12 +24,8 @@ const code = `const schema = {
       type: 'string',
       enum: ['foo', 'bar', 'baz'],
     },
-    checkbox: {
-      type: 'boolean',
-    },
-    switch: {
-      type: 'boolean',
-    },
+    checkbox: { type: 'boolean',title: 'Accepted' },
+    switch: { type: 'boolean' },
     checkboxGroup: {
       type: 'array',
       items: {
@@ -53,28 +39,19 @@ const code = `const schema = {
 
 const extraProps = {
   properties: {
-    textarea: {
-      component: 'TextArea',
-    },
-    password: {
-      component: 'Password',
-    },
-    date: {
-      component: 'DatePicker',
-    },
+    textarea: { component: 'TextArea' },
+    password: { component: 'Password' },
+    date: { component: 'DatePicker' },
+    time: { component: 'TimePicker' },
     rate: { component: 'Rate' },
-    radioGroup: {
-      component: 'RadioGroup',
-    },
-    switch: {
-      component: 'Switch',
-    },
+    slider: { component: 'Slider' },
+    radioGroup: { component: 'RadioGroup' },
+    switch: { component: 'Switch' },
   },
 };
 
 const middlewares = [
   SubmitButtonMw,
-  ValidateMw,
   ExtraPropsMw,
   FieldsetTemplateMw,
   ...schemaMws,
@@ -82,11 +59,13 @@ const middlewares = [
 
   ...withName([
     [ 'DatePicker', DatePickerMw ],
+    [ 'TimePicker', TimePickerMw ],
     [ 'Rate', RateMw ],
     [ 'Switch', SwitchMw ],
     [ 'TextArea', TextAreaMw ],
     [ 'Password', PasswordMw ],
     [ 'RadioGroup', RadioGroupMw ],
+    [ 'Slider', SliderMw ],
   ]),
 
   CheckboxGroupMw,

@@ -19,7 +19,6 @@ interface ErrorsProps {
 }
 
 export function validate(schema: JSONSchema7, data: any) {
-  console.log(schema.properties && Object.keys(schema.properties));
   ajv.validate(schema, data);
   return ajv.errors;
 }

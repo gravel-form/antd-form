@@ -5,22 +5,24 @@ import Form, { withName } from '../Form';
 
 import { FixedObjectMw, FixedArrayMw, schemaMws } from '../middlewares/share';
 
-import DatePickerMw from '../middlewares/DatePicker';
+import DatePickerMw from '../middlewares/DatePickerMw';
+import TimePickerMw from '../middlewares/TimePickerMw';
 import ExtraPropsMw from '../middlewares/ExtraPropsMw';
 import FormItemTemplateMw from '../middlewares/FormItemTemplateMw';
 import ValidateMw from '../middlewares/ValidateMw';
-import NotSupported from '../middlewares/NotSupported';
+import NotSupported from '../middlewares/NotSupportedMw';
 import ErrorListMw from '../middlewares/ErrorListMw';
-import InputMw, { TextAreaMw, PasswordMw } from '../middlewares/Input';
-import InputNumberMw from '../middlewares/InputNumber';
+import InputMw, { TextAreaMw, PasswordMw } from '../middlewares/InputMw';
+import InputNumberMw from '../middlewares/InputNumberMw';
 import FieldsetTemplateMw from '../middlewares/FieldsetTemplateMw';
-import CheckboxGroupMw from '../middlewares/CheckboxGroup';
-import SelectMw from '../middlewares/Select';
+import CheckboxGroupMw from '../middlewares/CheckboxGroupMw';
+import SelectMw from '../middlewares/SelectMw';
 import { SubmitButtonMw, SubmitButtonWithValidationMw } from '../middlewares/SubmitButtonMw';
 import RadioGroupMw from '../middlewares/RadioGroupMw';
 import CheckboxMw from '../middlewares/CheckboxMw';
 import SwitchMw from '../middlewares/SwitchMw';
 import RateMw from '../middlewares/RateMw';
+import SliderMw from '../middlewares/SliderMw';
 import { RowMw, ColMw } from '../middlewares/GridMw';
 
 import { LiveProvider, LiveEditor, LiveError, LivePreview } from 'react-live';
@@ -57,9 +59,11 @@ const map: any = {
   RateMw,
   // number, integer
   InputNumberMw,
+  SliderMw,
 
   // string
   DatePickerMw,
+  TimePickerMw,
   TextAreaMw,
   PasswordMw,
   InputMw,

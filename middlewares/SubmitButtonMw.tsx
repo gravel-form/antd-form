@@ -41,7 +41,6 @@ export const SubmitButtonWithValidationMw: React.ComponentType<AntdFormMiddlewar
     try {
       const errors = validate(schema, data);
       if (!errors) onSubmit && onSubmit(data);
-      console.log(errors);
       setErrors(errors);
       setAjvException(null);
     } catch (err) {
