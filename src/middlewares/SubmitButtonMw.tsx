@@ -1,8 +1,7 @@
 import * as React from 'react';
 import get from 'lodash/get';
 import { Form, Button, Alert } from 'antd';
-import { AntdFormMiddlewareProps } from './share';
-import { ErrorObject, validate } from './ValidateMw';
+import { AntdFormMiddlewareProps, ErrorObject, validate } from '../share';
 
 export const SubmitButtonMw: React.ComponentType<AntdFormMiddlewareProps> = (props) => {
   const {

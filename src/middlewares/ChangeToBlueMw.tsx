@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { FormMiddlewareProps } from './share';
+import { FormMiddlewareProps } from '../share';
 
 export const ChangeToBlurMw: React.ComponentType<FormMiddlewareProps> = (props) => {
   const { schema, next, data, onChange } = props;

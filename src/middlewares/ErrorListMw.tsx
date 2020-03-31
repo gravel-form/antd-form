@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Alert } from 'antd';
-import { AntdFormMiddlewareProps } from './share';
+import { AntdFormMiddlewareProps } from '../share';
 
 export const ErrorListMw: React.ComponentType<AntdFormMiddlewareProps> = (props) => {
   const { parent, next, errors } = props;

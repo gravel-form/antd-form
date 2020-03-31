@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { Affix, Input } from 'antd';
-import { AntdFormMiddlewareProps } from '../middlewares/share';
-// import JsonEditor from './JsonEditor';
+import { AntdFormMiddlewareProps } from '../src';
 
 const JsonEditor: React.FC<{ value: any; onChange?: any }> = ({ value, onChange }) => {
   const [editingValue, setEditingValue] = React.useState('');

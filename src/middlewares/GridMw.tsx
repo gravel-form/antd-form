@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Row, Col } from 'antd';
 import get from 'lodash/get';
-import { AntdFormMiddlewareProps } from './share';
+import { AntdFormMiddlewareProps } from '../share';
 
 export const ColMw: React.ComponentType<AntdFormMiddlewareProps> = (props) => {
   const { extraProps, parent, next } = props;

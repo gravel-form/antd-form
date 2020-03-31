@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import { FormMiddlewareProps } from './share';
+import { FormMiddlewareProps } from '../share';
 
 export class ChangeToBlur2Mw extends React.Component<FormMiddlewareProps> {
   state = { value: this.props.data };
@@ -44,8 +44,8 @@ export class ChangeToBlur2Mw extends React.Component<FormMiddlewareProps> {
       data: this.focus ? value : data,
       onChange: this.focus
         ? (value: any) => {
-          this.setState({ value });
-        }
+            this.setState({ value });
+          }
         : onChange,
     });
   }

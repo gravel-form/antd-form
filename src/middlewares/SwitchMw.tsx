@@ -1,7 +1,7 @@
 import * as React from 'react';
 import get from 'lodash/get';
 import { Switch } from 'antd';
-import { AntdFormMiddlewareProps } from './share';
+import { AntdFormMiddlewareProps } from '../share';
 
 export const SwitchMw: React.FC<AntdFormMiddlewareProps> = (props) => {
   const { schema, onChange, data, next, extraProps } = props;

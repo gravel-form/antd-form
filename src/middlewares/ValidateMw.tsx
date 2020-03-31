@@ -1,29 +1,8 @@
 import React from 'react';
-import Ajv from 'ajv';
-import { JSONSchema7 } from 'json-schema';
 import { Alert } from 'antd';
-import { FormMiddlewareProps } from '../core/src';
+import { AntdFormMiddlewareProps, validate } from '../share';
 
-const ajv = new Ajv({
-  errorDataPath: 'property',
-  allErrors: true,
-  multipleOfPrecision: 8,
-  schemaId: 'auto',
-  unknownFormats: 'ignore',
-});
-
-export type ErrorObject = Ajv.ErrorObject;
-
-interface ErrorsProps {
-  errors?: ErrorObject[];
-}
-
-export function validate(schema: JSONSchema7, data: any) {
-  ajv.validate(schema, data);
-  return ajv.errors;
-}
-
-export const ValidateMw: React.FC<FormMiddlewareProps & ErrorsProps> = (props) => {
+export const ValidateMw: React.FC<AntdFormMiddlewareProps> = (props) => {
   const { schema, data, next, parent } = props;
   const [errors, ajvException] = React.useMemo(() => {
     try {

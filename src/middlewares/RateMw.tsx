@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Rate } from 'antd';
 import get from 'lodash/get';
-import { AntdFormMiddlewareProps } from './share';
+import { AntdFormMiddlewareProps } from '../share';
 
 export const RateMw: React.FC<AntdFormMiddlewareProps> = (props) => {
   const { schema, onChange, data, next, extraProps } = props;

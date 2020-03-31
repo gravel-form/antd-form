@@ -1,23 +1,23 @@
 import * as React from 'react';
 import get from 'lodash/get';
-import { Slider } from 'antd';
-import { AntdFormMiddlewareProps } from './share';
+import { InputNumber } from 'antd';
+import { AntdFormMiddlewareProps } from '../share';
 
-export const SliderMw: React.ComponentType<AntdFormMiddlewareProps> = (props) => {
+export const InputNumberMw: React.ComponentType<AntdFormMiddlewareProps> = (props) => {
   const { next, schema, data, onChange, extraProps } = props;
   if (typeof schema === 'boolean' || !(schema.type === 'number' || schema.type === 'integer')) return next(props);
   const { maximum, minimum } = schema;
   return (
-    <Slider
-      min={minimum}
+    <InputNumber
+      type="number"
+      style={{ width: '100%' }}
       max={maximum}
+      min={minimum}
       value={typeof data === 'number' ? data : undefined}
-      onChange={(value) => {
-        if (!Array.isArray(value)) onChange(value);
-      }}
+      onChange={onChange}
       {...get(extraProps, 'props')}
     />
   );
 };
 
-export default SliderMw;
+export default InputNumberMw;

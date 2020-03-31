@@ -1,6 +1,6 @@
 import get from 'lodash/get';
 import * as React from 'react';
-import { AntdFormMiddlewareProps } from './share';
+import { AntdFormMiddlewareProps } from '../share';
 
 export function withName(
   list: [string, React.ComponentType<AntdFormMiddlewareProps>][]

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import get from 'lodash/get';
 import { Radio } from 'antd';
-import { AntdFormMiddlewareProps } from './share';
+import { AntdFormMiddlewareProps } from '../share';
 
 export const RadioGroupMw: React.FC<AntdFormMiddlewareProps> = (props) => {
   const { schema, onChange, data, extraProps, next } = props;

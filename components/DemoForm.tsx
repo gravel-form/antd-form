@@ -1,88 +1,20 @@
 import * as React from 'react';
+import omit from 'lodash/omit';
 import { Card, Row, Col } from 'antd';
 import { LiveProvider, LiveEditor, LiveError, LivePreview } from 'react-live';
 
-import Form from '../Form';
-import { withName } from '../middlewares';
-
-import { FixedObjectMw, FixedArrayMw, schemaMws } from '../middlewares/share';
-
-import DatePickerMw from '../middlewares/DatePickerMw';
-import TimePickerMw from '../middlewares/TimePickerMw';
-import ExtraPropsMw from '../middlewares/ExtraPropsMw';
-import FormItemTemplateMw from '../middlewares/FormItemTemplateMw';
-import ValidateMw from '../middlewares/ValidateMw';
-import NotSupportedMw from '../middlewares/NotSupportedMw';
-import ErrorListMw from '../middlewares/ErrorListMw';
-import InputMw, { TextAreaMw, PasswordMw } from '../middlewares/InputMw';
-import InputNumberMw from '../middlewares/InputNumberMw';
-import FieldsetTemplateMw from '../middlewares/FieldsetTemplateMw';
-import CheckboxGroupMw from '../middlewares/CheckboxGroupMw';
-import SelectMw from '../middlewares/SelectMw';
-import { SubmitButtonMw, SubmitButtonWithValidationMw } from '../middlewares/SubmitButtonMw';
-import RadioGroupMw from '../middlewares/RadioGroupMw';
-import CheckboxMw from '../middlewares/CheckboxMw';
-import SwitchMw from '../middlewares/SwitchMw';
-import RateMw from '../middlewares/RateMw';
-import SliderMw from '../middlewares/SliderMw';
-import { RowMw, ColMw } from '../middlewares/GridMw';
-
 import FormDataViewerMw from '../components/FormDataViewerMw';
-
-const map: any = {
-  schemaMws,
-  SubmitButtonMw,
-  SubmitButtonWithValidationMw,
-  ValidateMw,
-  ExtraPropsMw,
-  ErrorListMw,
-
-  RowMw,
-  ColMw,
-  FieldsetTemplateMw,
-  FormItemTemplateMw,
-  FixedObjectMw,
-  FixedArrayMw,
-
-  // array, enum, unique
-  CheckboxGroupMw,
-
-  // boolean
-  SwitchMw,
-  CheckboxMw,
-
-  // enum
-  RadioGroupMw,
-  SelectMw,
-
-  // integer
-  RateMw,
-  // number, integer
-  InputNumberMw,
-  SliderMw,
-
-  // string
-  DatePickerMw,
-  TimePickerMw,
-  TextAreaMw,
-  PasswordMw,
-  InputMw,
-
-  NotSupportedMw,
-
-  // dev
-  FormDataViewerMw,
-};
 
 const DemoForm: React.FC<{ code: string; scope?: { [key: string]: any } | React.ReactElement }> = ({ code, scope }) => {
   if (typeof code === 'string') {
+    const gravelFormAntd = require('../src');
+    console.log(gravelFormAntd);
     return (
       <LiveProvider
         code={code}
         scope={{
-          Form,
-          withName,
-          ...map,
+          ...omit(gravelFormAntd, 'default'),
+          FormDataViewerMw,
           Ajv: require('ajv'),
           Antd: require('antd'),
           ReactAsyncHook: require('react-async-hook'),

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import get from 'lodash/get';
 import { Input } from 'antd';
-import { AntdFormMiddlewareProps } from './share';
+import { AntdFormMiddlewareProps } from '../share';
 const { TextArea, Password } = Input;
 
 export const InputMw: React.FC<AntdFormMiddlewareProps> = (props) => {

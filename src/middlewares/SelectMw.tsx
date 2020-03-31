@@ -1,7 +1,7 @@
 import * as React from 'react';
 import get from 'lodash/get';
 import { Select } from 'antd';
-import { AntdFormMiddlewareProps } from './share';
+import { AntdFormMiddlewareProps } from '../share';
 
 export const SelectMw: React.ComponentType<AntdFormMiddlewareProps> = (props) => {
   const { schema, data: value, onChange, next, extraProps } = props;

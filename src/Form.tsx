@@ -1,6 +1,5 @@
 import * as React from 'react';
-import get from 'lodash/get';
-import { AntdFormProps, FormCore, AntdFormMiddlewareProps } from './middlewares/share';
+import { AntdFormProps, FormCore } from './share';
 import { Form as AntdForm } from 'antd';
 
 const Form: React.FC<AntdFormProps> = (props) => {

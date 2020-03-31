@@ -50,38 +50,12 @@ const extraProps = {
   },
 };
 
-const middlewares = [
-  SubmitButtonMw,
-  ExtraPropsMw,
-  FieldsetTemplateMw,
-  ...schemaMws,
-  FormItemTemplateMw,
-
-  ...withName([
-    [ 'DatePicker', DatePickerMw ],
-    [ 'TimePicker', TimePickerMw ],
-    [ 'Rate', RateMw ],
-    [ 'Switch', SwitchMw ],
-    [ 'TextArea', TextAreaMw ],
-    [ 'Password', PasswordMw ],
-    [ 'RadioGroup', RadioGroupMw ],
-    [ 'Slider', SliderMw ],
-  ]),
-
-  CheckboxGroupMw,
-  CheckboxMw,
-  SelectMw,
-  InputMw,
-  InputNumberMw,
-  NotSupportedMw,
-];
-
 render(
   <Form
     layout="vertical"
     schema={schema}
     extraProps={extraProps}
-    middlewares={middlewares}
+    middlewares={presetMws}
   />
 );
 `;

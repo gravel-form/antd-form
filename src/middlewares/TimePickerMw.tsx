@@ -1,18 +1,18 @@
 import * as React from 'react';
 import get from 'lodash/get';
-import { DatePicker } from 'antd';
-import { AntdFormMiddlewareProps } from './share';
+import { TimePicker } from 'antd';
+import { AntdFormMiddlewareProps } from '../share';
 import moment from 'moment';
 
-export const DatePickerMw: React.FC<AntdFormMiddlewareProps> = (props) => {
+export const TimePickerMw: React.ComponentType<AntdFormMiddlewareProps> = (props) => {
   const { next, schema, data, onChange, extraProps } = props;
 
   if (typeof schema === 'boolean' || schema.type !== 'string') return next(props);
 
   return (
-    <DatePicker
+    <TimePicker
       style={{ width: '100%' }}
-      value={typeof data === 'string' ? moment(data) : null}
+      value={typeof data === 'string' ? moment(data, 'HH:mm:ss') : null}
       onChange={(_, dateString) => {
         onChange(dateString || undefined);
       }}
@@ -21,4 +21,4 @@ export const DatePickerMw: React.FC<AntdFormMiddlewareProps> = (props) => {
   );
 };
 
-export default DatePickerMw;
+export default TimePickerMw;
