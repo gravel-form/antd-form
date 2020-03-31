@@ -64,7 +64,7 @@ const middlewares = [
   ...schemaMws,
   FormItemTemplateMw,
   InputMw,
-  NotSupported,
+  NotSupportedMw,
 ];
 
 render(

@@ -106,7 +106,7 @@ const middlewares = [
   SelectMw,
   InputMw,
   InputNumberMw,
-  NotSupported,
+  NotSupportedMw,
 ];
 
 render(

@@ -4,7 +4,7 @@ import { Input } from 'antd';
 import { AntdFormMiddlewareProps } from './share';
 const { TextArea, Password } = Input;
 
-export const InputMw: React.ComponentType<AntdFormMiddlewareProps> = (props) => {
+export const InputMw: React.FC<AntdFormMiddlewareProps> = (props) => {
   const { next, schema, data, onChange, extraProps } = props;
   if (typeof schema === 'boolean' || schema.type !== 'string') return next(props);
   return (
@@ -18,7 +18,7 @@ export const InputMw: React.ComponentType<AntdFormMiddlewareProps> = (props) => 
   );
 };
 
-export const TextAreaMw: React.ComponentType<AntdFormMiddlewareProps> = (props) => {
+export const TextAreaMw: React.FC<AntdFormMiddlewareProps> = (props) => {
   const { next, schema, data, onChange, extraProps } = props;
   if (typeof schema === 'boolean' || schema.type !== 'string') return next(props);
   return (
@@ -32,7 +32,7 @@ export const TextAreaMw: React.ComponentType<AntdFormMiddlewareProps> = (props) 
   );
 };
 
-export const PasswordMw: React.ComponentType<AntdFormMiddlewareProps> = (props) => {
+export const PasswordMw: React.FC<AntdFormMiddlewareProps> = (props) => {
   const { next, schema, data, onChange, extraProps } = props;
   if (typeof schema === 'boolean' || schema.type !== 'string') return next(props);
   return (

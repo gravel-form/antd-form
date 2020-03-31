@@ -86,7 +86,7 @@ const middlewares = [
   ...schemaMws,
   ExampleSignleAsyncValidateMw,
   InputMw,
-  NotSupported
+  NotSupportedMw,
 ];
 
 const schema = {

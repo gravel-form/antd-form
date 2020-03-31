@@ -3,8 +3,13 @@ import Router from 'next/router';
 import 'antd/dist/antd.css';
 
 import { Layout, Menu } from 'antd';
-
+// import getConfig from 'next-server/config';
 const { Sider, Content } = Layout;
+
+// const { publicRuntimeConfig } = getConfig();
+// const linkPrefix = publicRuntimeConfig.linkPrefix;
+
+const backendUrl = process.env.BACKEND_URL || '';
 
 const Page: React.FC = ({ children }) => {
   return (
@@ -25,7 +30,7 @@ const Page: React.FC = ({ children }) => {
           style={{ height: '100vh', overflow: 'auto' }}
           defaultSelectedKeys={[]}
           onClick={({ key }) => {
-            Router.push(key);
+            Router.push(key, `${backendUrl}${key}`, { shallow: true });
           }}
         >
           <Menu.Item key="/basic">

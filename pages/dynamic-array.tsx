@@ -91,7 +91,7 @@ const middlewares = [
   ExampleDynamicArrayMw,
   FormItemTemplateMw,
   InputMw,
-  NotSupported,
+  NotSupportedMw,
 ];
 
 render(

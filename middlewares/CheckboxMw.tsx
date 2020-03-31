@@ -3,7 +3,7 @@ import get from 'lodash/get';
 import { Checkbox } from 'antd';
 import { AntdFormMiddlewareProps } from './share';
 
-export const RadioGroupMw: React.ComponentType<AntdFormMiddlewareProps> = (props) => {
+export const CheckboxMw: React.ComponentType<AntdFormMiddlewareProps> = (props) => {
   const { schema, onChange, data, next, extraProps } = props;
   if (typeof schema === 'boolean' || schema.type !== 'boolean') return next(props);
 
@@ -14,4 +14,4 @@ export const RadioGroupMw: React.ComponentType<AntdFormMiddlewareProps> = (props
   );
 };
 
-export default RadioGroupMw;
+export default CheckboxMw;

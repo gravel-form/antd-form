@@ -5,7 +5,8 @@
     "dev": "next",
     "build": "next build",
     "start": "next start",
-    "type-check": "tsc"
+    "type-check": "tsc",
+    "deploy": "rimraf node_modules/.cache && rimraf out && next build && next export && touch out/.nojekyll && gh-pages -d out -t true"
   },
   "dependencies": {
     "@types/bluebird": "^3.5.30",
@@ -28,6 +29,8 @@
     "@types/node": "^13.9.5",
     "@types/react": "^16.9.27",
     "@types/react-dom": "^16.9.5",
+    "gh-pages": "^2.2.0",
+    "rimraf": "^3.0.2",
     "typescript": "^3.8.3"
   },
   "license": "ISC"

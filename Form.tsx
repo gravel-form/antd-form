@@ -23,14 +23,4 @@ const Form: React.FC<AntdFormProps> = (props) => {
   );
 };
 
-export function withName(list: [string, React.FC<AntdFormMiddlewareProps>][]): React.FC<AntdFormMiddlewareProps>[] {
-  return list.map(([name, Component]) => {
-    const C: React.FC<AntdFormMiddlewareProps> = (props: AntdFormMiddlewareProps) => {
-      if (get(props.extraProps, 'component') !== name) return props.next(props);
-      return <Component {...props} />;
-    };
-    return C;
-  });
-}
-
 export default Form;

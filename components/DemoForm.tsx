@@ -1,7 +1,9 @@
 import * as React from 'react';
 import { Card, Row, Col } from 'antd';
+import { LiveProvider, LiveEditor, LiveError, LivePreview } from 'react-live';
 
-import Form, { withName } from '../Form';
+import Form from '../Form';
+import { withName } from '../middlewares';
 
 import { FixedObjectMw, FixedArrayMw, schemaMws } from '../middlewares/share';
 
@@ -10,7 +12,7 @@ import TimePickerMw from '../middlewares/TimePickerMw';
 import ExtraPropsMw from '../middlewares/ExtraPropsMw';
 import FormItemTemplateMw from '../middlewares/FormItemTemplateMw';
 import ValidateMw from '../middlewares/ValidateMw';
-import NotSupported from '../middlewares/NotSupportedMw';
+import NotSupportedMw from '../middlewares/NotSupportedMw';
 import ErrorListMw from '../middlewares/ErrorListMw';
 import InputMw, { TextAreaMw, PasswordMw } from '../middlewares/InputMw';
 import InputNumberMw from '../middlewares/InputNumberMw';
@@ -24,8 +26,6 @@ import SwitchMw from '../middlewares/SwitchMw';
 import RateMw from '../middlewares/RateMw';
 import SliderMw from '../middlewares/SliderMw';
 import { RowMw, ColMw } from '../middlewares/GridMw';
-
-import { LiveProvider, LiveEditor, LiveError, LivePreview } from 'react-live';
 
 import FormDataViewerMw from '../components/FormDataViewerMw';
 
@@ -68,7 +68,7 @@ const map: any = {
   PasswordMw,
   InputMw,
 
-  NotSupported,
+  NotSupportedMw,
 
   // dev
   FormDataViewerMw,

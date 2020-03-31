@@ -127,7 +127,7 @@ const middlewares = [
   FormItemTemplateMw,
   ...withName([[ 'DatePicker', DatePickerMw ]]),
   InputMw,
-  NotSupported,
+  NotSupportedMw,
 ];
 
 render(
