@@ -1,6 +1,7 @@
 import * as React from 'react';
-import { AntdFormProps, FormCore } from './share';
 import { Form as AntdForm } from 'antd';
+import { FormCore } from './core';
+import { AntdFormProps } from './share';
 import { presetMws } from './preset';
 
 const Form: React.FC<AntdFormProps> = (props) => {

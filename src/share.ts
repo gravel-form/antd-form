@@ -2,11 +2,7 @@ import { FormProps as AntdFP } from 'antd/lib/form';
 import Ajv from 'ajv';
 import { JSONSchema7 } from 'json-schema';
 
-import { FormMiddlewareProps, FormProps } from '../core/src';
-// import { FormMiddlewareProps, FormProps } from '@gravel-form/core';
-
-export * from '../core/src';
-// export * from '@gravel-form/core';
+import { FormMiddlewareProps, FormProps } from './core';
 
 export type ErrorObject = Ajv.ErrorObject;
 

@@ -27,6 +27,10 @@ const code = `const schema = {
     lastName: {
       $ref: '#last-name',
     },
+    gender: {
+      type: 'string',
+      enum: [ 'male', 'female' ],
+    },
     age: {
       type: 'integer',
       title: 'Age of person',
@@ -63,6 +67,10 @@ const extraProps = {
   properties: {
     firstName: { col: { span:11 } },
     lastName: { col: { span:11 } },
+    gender: {
+      component: 'RadioGroup',
+      labels: [ "%E2%99%82", "%E2%99%80" ].map(decodeURIComponent)
+    },
     bio: {
       component: 'TextArea',
       props: {
@@ -82,7 +90,7 @@ const middlewares = [
   FormDataViewerMw,
 
   // SubmitButtonMw,
-  // ValidateMw,
+  // LiveValidateMw,
   SubmitButtonWithValidationMw,
 
   ExtraPropsMw,
@@ -93,12 +101,14 @@ const middlewares = [
   FormItemTemplateMw,
 
   ...withName([
-    [ 'DatePicker', DatePickerMw ],
-    [ 'Rate', RateMw ],
-    [ 'Switch', SwitchMw ],
-    [ 'TextArea', TextAreaMw ],
-    [ 'Password', PasswordMw ],
-    [ 'RadioGroup', RadioGroupMw ],
+    ['DatePicker', DatePickerMw],
+    ['Password', PasswordMw],
+    ['RadioGroup', RadioGroupMw],
+    ['Rate', RateMw],
+    ['Slider', SliderMw],
+    ['Switch', SwitchMw],
+    ['TextArea', TextAreaMw],
+    ['TimePicker', TimePickerMw],
   ]),
 
   CheckboxGroupMw,

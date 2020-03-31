@@ -2,7 +2,7 @@ import React from 'react';
 import { Alert } from 'antd';
 import { AntdFormMiddlewareProps, validate } from '../share';
 
-export const ValidateMw: React.FC<AntdFormMiddlewareProps> = (props) => {
+export const LiveValidateMw: React.FC<AntdFormMiddlewareProps> = (props) => {
   const { schema, data, next, parent } = props;
   const [errors, ajvException] = React.useMemo(() => {
     try {
@@ -22,4 +22,4 @@ export const ValidateMw: React.FC<AntdFormMiddlewareProps> = (props) => {
   );
 };
 
-export default ValidateMw;
+export default LiveValidateMw;

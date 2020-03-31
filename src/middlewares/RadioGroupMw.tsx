@@ -7,7 +7,8 @@ export const RadioGroupMw: React.FC<AntdFormMiddlewareProps> = (props) => {
   const { schema, onChange, data, extraProps, next } = props;
   if (typeof schema === 'boolean' || !schema.enum) return next(props);
 
-  const labels = get(extraProps, 'labels') || schema.enum;
+  const _labels = get(extraProps, 'labels');
+  const labels = _labels || schema.enum;
 
   return (
     <Radio.Group onChange={(e) => onChange(e.target.value)} value={data} {...get(extraProps, 'props')}>

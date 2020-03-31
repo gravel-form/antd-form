@@ -1,6 +1,7 @@
 import * as React from 'react';
-import { Affix, Input } from 'antd';
+import { Affix, Input, Tooltip } from 'antd';
 import { AntdFormMiddlewareProps } from '../src';
+import { InfoCircleOutlined } from '@ant-design/icons';
 
 const JsonEditor: React.FC<{ value: any; onChange?: any }> = ({ value, onChange }) => {
   const [editingValue, setEditingValue] = React.useState('');
@@ -39,7 +40,15 @@ export const FormDataViewerMw: React.ComponentType<AntdFormMiddlewareProps> = (p
       <Affix offsetTop={0} target={() => container}>
         <div style={{ background: '#fff', paddingBottom: 12 }}>
           <fieldset>
-            <legend>Form Data</legend>
+            <legend>
+              <Tooltip
+                title={'Try to hide this component by removing "FormDataViewerMw" form the "middlewares" array.'}
+              >
+                <span>
+                  Form Data <InfoCircleOutlined />
+                </span>
+              </Tooltip>
+            </legend>
             <JsonEditor value={data} onChange={onChange} />
           </fieldset>
         </div>

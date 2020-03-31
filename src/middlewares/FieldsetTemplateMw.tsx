@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { FormMiddlewareProps } from '../share';
+import { FormMiddlewareProps } from '../core';
 import { Typography } from 'antd';
 const { Text } = Typography;
 

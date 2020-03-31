@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { toJSONSchemaPath, AntdFormMiddlewareProps, isRequired } from '../share';
+import { toJSONSchemaPath, isRequired } from '../core';
+import { AntdFormMiddlewareProps } from '../share';
 import { Form } from 'antd';
 
 export const FormItemTemplateBaseMw: React.ComponentType<AntdFormMiddlewareProps> = (props) => {

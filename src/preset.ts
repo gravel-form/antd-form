@@ -1,4 +1,4 @@
-import { schemaMws } from './share';
+import { schemaMws } from './core';
 
 import DatePickerMw from './middlewares/DatePickerMw';
 import TimePickerMw from './middlewares/TimePickerMw';
@@ -22,13 +22,13 @@ export const basicFormControlMws = [CheckboxGroupMw, CheckboxMw, SelectMw, Input
 
 export const advancedFormControlMws = withName([
   ['DatePicker', DatePickerMw],
-  ['TimePicker', TimePickerMw],
-  ['Rate', RateMw],
-  ['Switch', SwitchMw],
-  ['TextArea', TextAreaMw],
   ['Password', PasswordMw],
   ['RadioGroup', RadioGroupMw],
+  ['Rate', RateMw],
   ['Slider', SliderMw],
+  ['Switch', SwitchMw],
+  ['TextArea', TextAreaMw],
+  ['TimePicker', TimePickerMw],
 ]);
 
 export const formControlMws = [...advancedFormControlMws, ...basicFormControlMws];
