@@ -1,7 +1,7 @@
 {
-  "name": "@gravel-from/antd",
+  "name": "@gravel-form/antd",
   "version": "0.0.1",
-  "license": "MIT",
+  "license": "ISC",
   "files": [
     "lib"
   ],
@@ -14,6 +14,7 @@
     "deploy": "rimraf node_modules/.cache && rimraf out && next build && next export && touch out/.nojekyll && gh-pages -d out -t true"
   },
   "dependencies": {
+    "@gravel-form/core": "https://github.com/gravel-form/gravel.git",
     "@types/bluebird": "^3.5.30",
     "@types/json-schema": "^7.0.4",
     "@types/lodash": "^4.14.149",
@@ -41,6 +42,5 @@
     "rimraf": "^3.0.2",
     "through2": "^3.0.1",
     "typescript": "^3.8.3"
-  },
-  "license": "ISC"
+  }
 }

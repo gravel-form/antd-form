@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { AntdFormProps, FormCore } from './share';
 import { Form as AntdForm } from 'antd';
+import { presetMws } from './preset';
 
 const Form: React.FC<AntdFormProps> = (props) => {
   const { onChange } = props;
@@ -20,6 +21,10 @@ const Form: React.FC<AntdFormProps> = (props) => {
       <FormCore {...props} onChange={handleChange} data={data} />
     </AntdForm>
   );
+};
+
+Form.defaultProps = {
+  middlewares: presetMws,
 };
 
 export default Form;

@@ -6,11 +6,10 @@ export function withName(
   list: [string, React.ComponentType<AntdFormMiddlewareProps>][]
 ): React.FC<AntdFormMiddlewareProps>[] {
   return list.map(([name, Component]) => {
-    const ComponentWithName: React.FC<AntdFormMiddlewareProps> = (props: AntdFormMiddlewareProps) => {
+    return (props: AntdFormMiddlewareProps) => {
       if (get(props.extraProps, 'component') !== name) return props.next(props);
       return <Component {...props} />;
     };
-    return ComponentWithName;
   });
 }
 

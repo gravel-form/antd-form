@@ -2,33 +2,33 @@ const path = require('path');
 const gulp = require('gulp');
 const through2 = require('through2');
 const ts = require('gulp-typescript');
+const sourcemaps = require('gulp-sourcemaps');
+const merge = require('merge-stream');
 
 const tsConfig = {
   allowJs: true,
   alwaysStrict: true,
+  declaration: true,
   esModuleInterop: true,
   forceConsistentCasingInFileNames: true,
-  isolatedModules: true,
   jsx: 'react',
   lib: ['dom', 'es2017'],
   moduleResolution: 'node',
-  noEmit: true,
   noFallthroughCasesInSwitch: true,
-  noUnusedLocals: false,
+  noImplicitAny: true,
+  noUnusedLocals: true,
   noUnusedParameters: true,
   resolveJsonModule: true,
   skipLibCheck: true,
   strict: true,
-  declaration: true,
+  target: 'es5',
+  downlevelIteration: true,
 };
-
-var sourcemaps = require('gulp-sourcemaps');
-var merge = require('merge-stream');
 
 const tsFiles = ['src/**/*.{ts,tsx}'];
 
 gulp.task('compile', function() {
-  var tsResult = gulp
+  const tsResult = gulp
     .src(tsFiles, {
       base: path.join(process.cwd(), 'src'),
     })
