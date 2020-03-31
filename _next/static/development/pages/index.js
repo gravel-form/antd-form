@@ -9,7 +9,7 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* WEBPACK VAR INJECTION */(function(process) {/* harmony import */ var antd_lib_menu_style__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! antd/lib/menu/style */ "./node_modules/antd/lib/menu/style/index.js");
+/* harmony import */ var antd_lib_menu_style__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! antd/lib/menu/style */ "./node_modules/antd/lib/menu/style/index.js");
 /* harmony import */ var antd_lib_menu_style__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(antd_lib_menu_style__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var antd_lib_menu__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! antd/lib/menu */ "./node_modules/antd/lib/menu/index.js");
 /* harmony import */ var antd_lib_menu__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(antd_lib_menu__WEBPACK_IMPORTED_MODULE_1__);
@@ -40,7 +40,7 @@ var Sider = antd_lib_layout__WEBPACK_IMPORTED_MODULE_3___default.a.Sider,
     Content = antd_lib_layout__WEBPACK_IMPORTED_MODULE_3___default.a.Content; // const { publicRuntimeConfig } = getConfig();
 // const linkPrefix = publicRuntimeConfig.linkPrefix;
 
-var backendUrl = process.env.BACKEND_URL || '';
+var backendUrl =  false || '';
 
 var Page = function Page(_ref) {
   var children = _ref.children;
@@ -76,7 +76,9 @@ var Page = function Page(_ref) {
     defaultSelectedKeys: [],
     onClick: function onClick(_ref2) {
       var key = _ref2.key;
-      next_router__WEBPACK_IMPORTED_MODULE_5___default.a.push(key, "".concat(backendUrl).concat(key));
+      next_router__WEBPACK_IMPORTED_MODULE_5___default.a.push(key, "".concat(backendUrl).concat(key), {
+        shallow: true
+      });
     },
     __self: _this,
     __source: {
@@ -220,7 +222,6 @@ var Page = function Page(_ref) {
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Page);
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../node_modules/process/browser.js */ "./node_modules/process/browser.js")))
 
 /***/ }),
 
@@ -26409,7 +26410,7 @@ var IndexPage = function IndexPage() {
 
 /***/ }),
 
-/***/ 2:
+/***/ 28:
 /*!*************************************************************************************************************************************!*\
   !*** multi next-client-pages-loader?page=%2F&absolutePagePath=%2FUsers%2Fyihui.lin%2Fworkspace%2Fgravel%2Fantd%2Fpages%2Findex.tsx ***!
   \*************************************************************************************************************************************/
@@ -26432,5 +26433,5 @@ module.exports = dll_2adc2403d89adc16ead0;
 
 /***/ })
 
-},[[2,"static/runtime/webpack.js","styles"]]]);
+},[[28,"static/runtime/webpack.js","styles"]]]);
 //# sourceMappingURL=index.js.map
