@@ -1,1 +1,1 @@
-self.__BUILD_MANIFEST = (function(a,b){return {"/basic":[a,b],"/grid":[a,b]}}("static\u002Fcss\u002Fstyles.chunk.css","static\u002Fchunks\u002Fstyles.js"));self.__BUILD_MANIFEST_CB && self.__BUILD_MANIFEST_CB()
+self.__BUILD_MANIFEST = (function(a,b){return {"/":[a,b],"/basic":[a,b],"/index":[a,b],"/kitchensink":[a,b],"/steps":[a,b]}}("static\u002Fcss\u002Fstyles.chunk.css","static\u002Fchunks\u002Fstyles.js"));self.__BUILD_MANIFEST_CB && self.__BUILD_MANIFEST_CB()
