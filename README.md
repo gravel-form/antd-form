@@ -51,15 +51,15 @@ More examples can be found on the [playground](https://gravel-form.github.io/ant
 
 ## Props
 ### Form
-| Name        | Description                                                                                                                                                                                         | Type                                           | Default   |
-|-------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------|-----------|
-| schema      | A v7 json schema                                                                                                                                                                                    | JSONSchema7                                    | -         |
-| middlewares | A list of middlewares                                                                                                                                                                               | React.ComponentType<AntdFormMiddlewareProps>[] | presetMws |
-| data        | Form data, if not provided initially, the data will be managed as internal state                                                                                                                    | any                                            | -         |
-| defaultData | Default form data if it's uncontrolled, will be ignored if data props is provieded                                                                                                                  | any                                            | -         |
-| onChange    | Trigger when form data updated                                                                                                                                                                      | (data:any) => void                             | -         |
-| onSubmit    | Trigger when submit button clicked, consumed by `SubmitButtonMw` or `SubmitButtonWithValidationMw`                                                                                                  | (data:any) => void                             | -         |
-| extraProps  | Processed by `ExtraPropsMw` in order to provide additional props to templates or form controls. Should match the structure of the schema, or customize it by replacing the middleware with your own | any                                            | -         |
+| Name        | Description                                                                                                                                                                                         | Type                                                 | Default   |
+|-------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------|-----------|
+| schema      | A v7 json schema                                                                                                                                                                                    | JSONSchema7                                          | -         |
+| middlewares | A list of middlewares                                                                                                                                                                               | React.ComponentType&lg;AntdFormMiddlewareProps&gt;[] | presetMws |
+| data        | Form data, if not provided initially, the data will be managed as internal state                                                                                                                    | any                                                  | -         |
+| defaultData | Default form data if it's uncontrolled, will be ignored if data props is provieded                                                                                                                  | any                                                  | -         |
+| onChange    | Trigger when form data updated                                                                                                                                                                      | (data:any) =&gt; void                                | -         |
+| onSubmit    | Trigger when submit button clicked, consumed by `SubmitButtonMw` or `SubmitButtonWithValidationMw`                                                                                                  | (data:any) =&gt; void                                | -         |
+| extraProps  | Processed by `ExtraPropsMw` in order to provide additional props to templates or form controls. Should match the structure of the schema, or customize it by replacing the middleware with your own | any                                                  | -         |
 
 Following from props are directly forwarded to the antd from component.
 | Name             | Description                                                                                                                                                  | Type                                     | Default    |
@@ -67,7 +67,7 @@ Following from props are directly forwarded to the antd from component.
 | colon            | Configure the default value of colon for Form.Item. Indicates whether the colon after the label is displayed (only effective when prop layout is horizontal) | boolean                                  | true       |
 | hideRequiredMark | Hide required mark for all form items                                                                                                                        | boolean                                  | false      |
 | labelAlign       | text align of label of all items                                                                                                                             | left                                     | right      |
-| labelCol         | label layout, like <Col> component. Set span offset value like {span: 3, offset: 12} or sm: {span: 3, offset: 12}                                            | object                                   | -          |
+| labelCol         | label layout, like &lt;Col&gt; component. Set span offset value like {span: 3, offset: 12} or sm: {span: 3, offset: 12}                                      | object                                   | -          |
 | layout           | Form layout                                                                                                                                                  | horizontal &#124; vertical &#124; inline | horizontal |
 | name             | Form name. Will be the prefix of Field id                                                                                                                    | string                                   | -          |
 | size             | Set field component size (antd components only)                                                                                                              | small &#124; middle &#124; large         | -          |
@@ -75,7 +75,7 @@ Following from props are directly forwarded to the antd from component.
 
 ### Middleware
 
-If you want to define you own middlewares, following props are you can access or provide to the folowing middlewares.
+If you want to define you own middlewares, following props are you will receive from the previous or provide to the folowing middlewares.
 | Name                | Description                                                                                                                                | Type                                                                          |
 |---------------------|--------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------|
 | schema              | Json schema                                                                                                                                | JSONSchema7Definition                                                         |
@@ -84,10 +84,10 @@ If you want to define you own middlewares, following props are you can access or
 | onChange            | Callback when form data updated                                                                                                            | (string &#124; number)[]                                                      |
 | schemaPath          | A array of string or number indecating the current location in the root schema                                                             | (string &#124; number)[]                                                      |
 | schemaPath          | A array of string or number indecating the current location in the root form data                                                          | (string &#124; number)[]                                                      |
-| MiddlewareComponent | A composed react component of the `formProps.middlewares`, you may want to invoke it when designing a custom object/array middleware.      | React.ComponentType<AntdFormMiddlewareProps>                                  |
+| MiddlewareComponent | A composed react component of the `formProps.middlewares`, you may want to invoke it when designing a custom object/array middleware.      | React.ComponentType&lt;AntdFormMiddlewareProps&gt;                            |
 | formProps           | The root form props.                                                                                                                       | AntdFormProps                                                                 |
-| localRefs           | A map between local `$id` and schema for `$ref` field, provided and consumed by `LocalRefMw`                                               | {[key:string]:{schema: JSONSchema7Definition, path:(string &#124; number)[]}} |
-| errors              | A list of json schema validation erros, provided by `LiveValidationMw` or `SubmitButtonWithValidationMw`, consumed by `FormItemTemplateMw` | Ajv.ErrorObject[]                                                             |
+| localRefs           | A map between local `$id` and schema for `$ref` field. Provided and consumed by `LocalRefMw`                                               | {[key:string]:{schema: JSONSchema7Definition, path:(string &#124; number)[]}} |
+| errors              | A list of json schema validation erros. Provided by `LiveValidationMw` or `SubmitButtonWithValidationMw`, consumed by `FormItemTemplateMw` | Ajv.ErrorObject[]                                                             |
 | extraProps          | See following section for details                                                                                                          | any                                                                           |
 
 where `JSONSchema7Definition` is `JSONSchema7 | boolean` see [here](https://github.com/DefinitelyTyped/DefinitelyTyped/pull/29026#issuecomment-422923016) for the reason.
@@ -102,7 +102,8 @@ The shap of the `extraProps` depends on the middlewares consuming it. If you are
 | labels     | `SelectMw`, `RadioGroupMw`, `CheckboxGroupMw` | to display a different text on the UI instead of the enum value                                             |
 | props      | Any form controls                             | props forwared to ant design `Col` component                                                                |
 
-Example:
+<details>
+  <summary>Click to Show the example.</summary>
 ```jsx
 import {
   ColMw,
@@ -156,3 +157,4 @@ const extraProps = {
   extraProps={extraProps}
 />
 ```
+</details>
