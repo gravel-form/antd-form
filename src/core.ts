@@ -1,2 +1,1 @@
-export * from '../core/src';
-// export * from '@gravel-form/core';
+export * from '@gravel-form/core-rc';
