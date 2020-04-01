@@ -13,8 +13,7 @@ export const SelectMw: React.ComponentType<AntdFormMiddlewareProps> = (props) =>
   )
     return next(props);
 
-  const _labels = get(extraProps, 'labels');
-  const labels = Array.isArray(_labels) ? _labels : schema.enum;
+  const labels = get(extraProps, 'labels', schema.enum);
 
   return (
     <Select
@@ -25,7 +24,7 @@ export const SelectMw: React.ComponentType<AntdFormMiddlewareProps> = (props) =>
     >
       {schema.enum.map((option, index) => (
         <Select.Option key={option as string | number} value={option as string | number}>
-          {labels[index]}
+          {get(labels, index, null)}
         </Select.Option>
       ))}
     </Select>

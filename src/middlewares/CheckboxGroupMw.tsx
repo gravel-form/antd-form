@@ -17,11 +17,13 @@ export const CheckboxGroupMw: React.ComponentType<AntdFormMiddlewareProps> = (pr
     return next(props);
   }
   const checkboxValues = schema.items.enum || [];
+  const labels = get(extraProps, 'labels', schema.items.enum);
+
   const data = props.data || [];
 
   return (
     <Checkbox.Group
-      options={checkboxValues.map((value) => ({ label: value as string, value: value as string }))}
+      options={checkboxValues.map((value, index) => ({ label: get(labels, index, null), value: value as string }))}
       value={data}
       onChange={(value) => onChange(value)}
       {...get(extraProps, 'props')}
