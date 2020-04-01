@@ -6,8 +6,8 @@ import { presetMws } from './preset';
 
 const Form: React.FC<AntdFormProps> = (props) => {
   const { onChange } = props;
-  const [data, setData] = React.useState(props.data || props.defaultData);
-  const { current: isControlled } = React.useRef(props.data !== undefined);
+  const { current: isControlled } = React.useRef(Object.hasOwnProperty.call(props, 'data'));
+  const [data, setData] = React.useState(isControlled ? props.data : props.defaultData);
   const handleChange = (newData: unknown) => {
     if (!isControlled) {
       setData(newData);
@@ -19,7 +19,7 @@ const Form: React.FC<AntdFormProps> = (props) => {
 
   return (
     <AntdForm {...{ colon, hideRequiredMark, labelAlign, labelCol, layout, name, size }}>
-      <FormCore {...props} onChange={handleChange} data={data} />
+      <FormCore {...props} onChange={handleChange} data={isControlled ? props.data : data} />
     </AntdForm>
   );
 };
