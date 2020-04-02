@@ -28,7 +28,8 @@
     "start": "next start",
     "type-check": "tsc",
     "compile": "gulp compile",
-    "deploy": "rimraf node_modules/.cache && rimraf out && next build && next export && touch out/.nojekyll && gh-pages -d out -t true"
+    "deploy": "rimraf node_modules/.cache && rimraf out && next build && next export && touch out/.nojekyll && gh-pages -d out -t true",
+    "npm-publish": "rimraf lib && npm run compile && npm publish --access public"
   },
   "peerDependencies": {
     "react": ">=16.9.0",
