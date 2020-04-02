@@ -56,7 +56,7 @@ const ExampleDynamicArrayMw = (props) => {
       })}
       {
         <Row>
-          <Button type="dashed" onClick={() => onChange([...dataItems, null])} style={{ width: '100%' }}>
+          <Button type="dashed" onClick={() => onChange([...dataItems, {}])} style={{ width: '100%' }}>
             + Add field
           </Button>
         </Row>
@@ -87,9 +87,9 @@ const middlewares = [
   FormDataViewerMw,
   ExtraPropsMw,
   FieldsetTemplateMw,
-  ...schemaMws,
   ExampleDynamicArrayMw,
   FormItemTemplateMw,
+  ...schemaMws,
   InputMw,
   NotSupportedMw,
 ];

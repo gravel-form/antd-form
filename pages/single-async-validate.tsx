@@ -16,7 +16,7 @@ const ajv = new Ajv({
 });
 
 async function waitForStopTyping(data, focused) {
-  if (!focused) return null;
+  if (!focused) return data;
   await Promise.delay(500);
   return data;
 }
@@ -82,13 +82,6 @@ const ExampleSignleAsyncValidateMw = (props) => {
   );
 };
 
-const middlewares = [
-  ...schemaMws,
-  ExampleSignleAsyncValidateMw,
-  InputMw,
-  NotSupportedMw,
-];
-
 const schema = {
   type: 'object',
   title: 'Form',
@@ -107,6 +100,13 @@ const schema = {
     },
   },
 };
+
+const middlewares = [
+  ...schemaMws,
+  ExampleSignleAsyncValidateMw,
+  InputMw,
+  NotSupportedMw,
+];
 
 render(
   <Form

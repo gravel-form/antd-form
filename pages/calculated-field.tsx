@@ -61,8 +61,8 @@ const middlewares = [
   ExtraPropsMw,
   ExampleCalculatedFieldMw,
   FieldsetTemplateMw,
-  ...schemaMws,
   FormItemTemplateMw,
+  ...schemaMws,
   InputMw,
   NotSupportedMw,
 ];

@@ -4,13 +4,11 @@ import { Form, Button, Alert } from 'antd';
 import { AntdFormMiddlewareProps, ErrorObject, validate } from '../share';
 
 export const SubmitButtonMw: React.ComponentType<AntdFormMiddlewareProps> = (props) => {
-  const {
-    parent,
-    next,
-    formProps: { onSubmit },
-  } = props;
+  const { parent, next } = props;
   if (parent) return next(props);
   const { extraProps } = props;
+
+  const onSubmit = props.onSubmit || props.formProps.onSubmit;
   return (
     <>
       {props.next(props)}
@@ -28,7 +26,7 @@ export const SubmitButtonWithValidationMw: React.ComponentType<AntdFormMiddlewar
     data,
     parent,
     next,
-    formProps: { schema, onSubmit },
+    formProps: { schema },
   } = props;
   const [errors, setErrors] = React.useState<ErrorObject[] | null | undefined>();
   const [ajvException, setAjvException] = React.useState<Error | null>(null);
@@ -38,6 +36,7 @@ export const SubmitButtonWithValidationMw: React.ComponentType<AntdFormMiddlewar
 
   const handleClick = () => {
     try {
+      const onSubmit = props.onSubmit || props.formProps.onSubmit;
       const errors = validate(schema, data);
       if (!errors) onSubmit && onSubmit(data);
       setErrors(errors);

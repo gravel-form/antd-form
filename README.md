@@ -54,7 +54,7 @@ More examples can be found on the [playground](https://gravel-form.github.io/ant
 | Name        | Description                                                                                                                                                                                         | Type                                                 | Default   |
 |-------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------|-----------|
 | schema      | A v7 json schema                                                                                                                                                                                    | JSONSchema7                                          | -         |
-| middlewares | A list of middlewares                                                                                                                                                                               | React.ComponentType&lg;AntdFormMiddlewareProps&gt;[] | presetMws |
+| middlewares | A list of middlewares                                                                                                                                                                               | React.ComponentType&lt;AntdFormMiddlewareProps&gt;[] | presetMws |
 | data        | Form data, if not provided initially, the data will be managed as internal state                                                                                                                    | any                                                  | -         |
 | defaultData | Default form data if it's uncontrolled, will be ignored if data props is provieded                                                                                                                  | any                                                  | -         |
 | onChange    | Trigger when form data updated                                                                                                                                                                      | (data:any) =&gt; void                                | -         |
@@ -74,8 +74,8 @@ Following from props are directly forwarded to the antd from component.
 
 
 ### Middleware
+If you want to define you own middlewares, following props are you can consume or provide the if you are using the built-in middlewares.
 
-If you want to define you own middlewares, following props are you will receive from the previous or provide to the folowing middlewares.
 | Name                | Description                                                                                                                                | Type                                                                          |
 |---------------------|--------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------|
 | schema              | Json schema                                                                                                                                | JSONSchema7Definition                                                         |
@@ -92,8 +92,10 @@ If you want to define you own middlewares, following props are you will receive 
 
 where `JSONSchema7Definition` is `JSONSchema7 | boolean` see [here](https://github.com/DefinitelyTyped/DefinitelyTyped/pull/29026#issuecomment-422923016) for the reason.
 
+Practically speaking, you can add any props you in you custom middlewares base on your need.
+
 ### extraProps
-The shap of the `extraProps` depends on the middlewares consuming it. If you are using `ExtraPropsMw` then the `formProps.extraProps` should match the structure of the schema so that `ExtraPropsMw` is able to retreat the related node base on the current schema path. On each node, the properties and their consumers are listed as follow.
+The shap of the `extraProps` depends on the middlewares consuming it. If you are using `ExtraPropsMw` then the `formProps.extraProps` should match the structure of the schema so that `ExtraPropsMw` is able to retreat the related node base on the current schema path. Following is a list of props that you can set if you are using the built-in middlewares.
 | properties | Consumer                                      | Description                                                                                                 |
 |------------|-----------------------------------------------|-------------------------------------------------------------------------------------------------------------|
 | component  | Middlewares wraped by the `withName`          | multiple middlewares may support the same schema, so that you can use this property to pick the desired one |
@@ -104,6 +106,7 @@ The shap of the `extraProps` depends on the middlewares consuming it. If you are
 
 <details>
   <summary>Click to Show the example.</summary>
+  <p>
 ```jsx
 import {
   ColMw,
@@ -157,4 +160,20 @@ const extraProps = {
   extraProps={extraProps}
 />
 ```
+</p>
 </details>
+
+## The order of the middlewares
+Because the previous middlewares can intercept the following, so ordering them correctly is also important.
+
+Usually, you may want to place the middlewares which handle more specific situaltions in the front. For example, `InputMw` can handle any `string` type whether `enum` props is given while `SelectMw` can only handle the situation when `enum` props is given. In this case, you may want to place `SelectMw` in the front so that when `enum` is present, `SelectMw` will be rendered otherwise it will fallback to `InputMw`. If placing `InputMw` in the front, then it is always intercepting.
+
+Also, the order may depend on the hierarchy of the elements. For example, if you want the fieldset to be wrapped by `Col` and to wrap all the fieldset content into `Row`, then you may order it as `ColMw`, `FormFieldTemplateMw`, `RowMw`.
+
+In the preset middleware list `presetMws`, the middlewares are ordered as
+- Root middlewares. Middlewares only apply on the root node, such as validation, submit button.
+- Node preprocess middlewares. `ExtraPropsMw`, `LocalRefMw`
+- Template middlewares. `ColMw`, `FieldsetTemplateMw`, `RowMw`, `FormItemTemplateMw`,
+- Schema middlewares. middlewares that process the `object` and `array` type.
+- Form contontrols. `InputMw`, `DateTimeMw`, `SelectMw` etc.
+- Default fallback. A middleware without any conditions, for display a error message if none of the form control middlewares can handle the current node.

@@ -1,4 +1,4 @@
-import { schemaMws } from './core';
+import { schemaMws, LocalRefMw } from './core';
 
 import DatePickerMw from './middlewares/DatePickerMw';
 import TimePickerMw from './middlewares/TimePickerMw';
@@ -35,8 +35,8 @@ export const formControlMws = [...advancedFormControlMws, ...basicFormControlMws
 
 export const presetMws = [
   SubmitButtonWithValidationMw,
-
   ExtraPropsMw,
+  LocalRefMw,
   ColMw,
   FieldsetTemplateMw,
   RowMw,

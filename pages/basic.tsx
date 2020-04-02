@@ -64,9 +64,11 @@ const code = `const schema = {
 
 const extraProps = {
   row: { justify: 'space-between' },
-  properties: {
+  definitions: {
     firstName: { col: { span:11 } },
-    lastName: { col: { span:11 } },
+    lastName: { col: { span:11 } }
+  },
+  properties: {
     gender: {
       component: 'RadioGroup',
       labels: [ "%E2%99%82", "%E2%99%80" ].map(decodeURIComponent)
@@ -94,11 +96,12 @@ const middlewares = [
   SubmitButtonWithValidationMw,
 
   ExtraPropsMw,
+  LocalRefMw,
   ColMw,
   FieldsetTemplateMw,
   RowMw,
-  ...schemaMws,
   FormItemTemplateMw,
+  ...schemaMws,
 
   ...withName([
     ['DatePicker', DatePickerMw],

@@ -15,6 +15,7 @@ const DemoForm: React.FC<{ code: string; scope?: { [key: string]: any } | React.
         FormDataViewerMw,
         Ajv: require('ajv'),
         Antd: require('antd'),
+        AntdIcons: require('@ant-design/icons'),
         ReactAsyncHook: require('react-async-hook'),
         Bluebird: require('bluebird'),
         Lodash: require('lodash'),
@@ -24,7 +25,7 @@ const DemoForm: React.FC<{ code: string; scope?: { [key: string]: any } | React.
     >
       <Row>
         <Col span={12}>
-          <Card style={{ height: '100vh', overflowY: 'auto' }}>
+          <Card style={{ height: '100vh', overflowY: 'auto', overflowX: 'auto' }}>
             <LiveEditor />
           </Card>
         </Col>

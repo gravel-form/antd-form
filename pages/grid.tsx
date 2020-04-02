@@ -57,8 +57,8 @@ const middlewares = [
   ColMw,
   FieldsetTemplateMw,
   RowMw,
-  ...schemaMws,
   FormItemTemplateMw,
+  ...schemaMws,
   InputMw,
   NotSupportedMw,
 ];
