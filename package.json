@@ -1,6 +1,6 @@
 {
   "name": "@gravel-form/antd",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "A flexible middlewares driven json schema form with Ant Design",
   "keywords": [
     "antd",
