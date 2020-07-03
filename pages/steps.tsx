@@ -6,6 +6,7 @@ import { NextPage } from 'next';
 import DemoForm from '../components/DemoForm';
 
 const code = `const _ = Lodash;
+const { ExtraPropsMw, withName } = GravelRc;
 const { Steps, Button } = Antd;
 const { Step } = Steps;
 
@@ -125,7 +126,7 @@ const middlewares = [
   ExtraPropsMw,
   ...schemaMws,
   FormItemTemplateMw,
-  ...withName([[ 'DatePicker', DatePickerMw ]]),
+  withName(DatePickerMw ,'DatePicker'),
   InputMw,
   NotSupportedMw,
 ];

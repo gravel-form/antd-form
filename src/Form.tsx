@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { Form as AntdForm } from 'antd';
 import { FormCore } from './core';
-import { AntdFormProps } from './share';
+import { FormProps } from './share';
 import { presetMws } from './preset';
 
-const Form: React.FC<AntdFormProps> = (props) => {
+const Form: React.FC<FormProps> = (props) => {
   const { onChange } = props;
   const { current: isControlled } = React.useRef(Object.hasOwnProperty.call(props, 'data'));
   const [data, setData] = React.useState(isControlled ? props.data : props.defaultData);

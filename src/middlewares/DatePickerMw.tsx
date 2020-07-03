@@ -1,10 +1,10 @@
 import * as React from 'react';
 import get from 'lodash/get';
 import { DatePicker } from 'antd';
-import { AntdFormMiddlewareProps } from '../share';
+import { MiddlewareProps } from '../share';
 import moment from 'moment';
 
-export const DatePickerMw: React.FC<AntdFormMiddlewareProps> = (props) => {
+export const DatePickerMw: React.FC<MiddlewareProps> = (props) => {
   const { next, schema, data, onChange, extraProps } = props;
 
   if (typeof schema === 'boolean' || schema.type !== 'string') return next(props);

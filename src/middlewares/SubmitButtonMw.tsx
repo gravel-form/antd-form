@@ -1,10 +1,10 @@
 import * as React from 'react';
 import get from 'lodash/get';
 import { Form, Button, Alert } from 'antd';
-import { AntdFormMiddlewareProps, ErrorObject, validate } from '../share';
+import { MiddlewareProps, ErrorObject, validate } from '../share';
 
-export const SubmitButtonMw: React.ComponentType<AntdFormMiddlewareProps> = (props) => {
-  const { parent, next } = props;
+export const SubmitButtonMw: React.ComponentType<MiddlewareProps> = (props) => {
+  const { parent, next, data } = props;
   if (parent) return next(props);
   const { extraProps } = props;
 
@@ -13,7 +13,7 @@ export const SubmitButtonMw: React.ComponentType<AntdFormMiddlewareProps> = (pro
     <>
       {props.next(props)}
       <Form.Item>
-        <Button onClick={onSubmit} type="primary" {...get(extraProps, 'props')}>
+        <Button onClick={() => onSubmit && onSubmit(data)} type="primary" {...get(extraProps, 'props')}>
           Submit
         </Button>
       </Form.Item>
@@ -21,7 +21,7 @@ export const SubmitButtonMw: React.ComponentType<AntdFormMiddlewareProps> = (pro
   );
 };
 
-export const SubmitButtonWithValidationMw: React.ComponentType<AntdFormMiddlewareProps> = (props) => {
+export const SubmitButtonWithValidationMw: React.ComponentType<MiddlewareProps> = (props) => {
   const {
     data,
     parent,

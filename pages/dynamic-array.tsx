@@ -4,6 +4,7 @@ import { NextPage } from 'next';
 import DemoForm from '../components/DemoForm';
 
 const code = `const _ = Lodash;
+const { ExtraPropsMw } = GravelRc;
 const { Button, Row, Col } = Antd;
 const ExampleDynamicArrayMw = (props) => {
   const {

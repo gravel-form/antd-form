@@ -1,8 +1,8 @@
 import React from 'react';
 import { Alert } from 'antd';
-import { AntdFormMiddlewareProps, validate } from '../share';
+import { MiddlewareProps, validate } from '../share';
 
-export const LiveValidateMw: React.FC<AntdFormMiddlewareProps> = (props) => {
+export const LiveValidateMw: React.FC<MiddlewareProps> = (props) => {
   const { schema, data, next, parent } = props;
   const [errors, ajvException] = React.useMemo(() => {
     try {

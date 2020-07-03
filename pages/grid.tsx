@@ -4,7 +4,8 @@ import { NextPage } from 'next';
 
 import DemoForm from '../components/DemoForm';
 
-const code = `const schema = {
+const code = `const { ExtraPropsMw } = GravelRc;
+const schema = {
   type: 'object',
   title: 'Grid Demo',
   properties: {
@@ -57,8 +58,8 @@ const middlewares = [
   ColMw,
   FieldsetTemplateMw,
   RowMw,
-  FormItemTemplateMw,
   ...schemaMws,
+  FormItemTemplateMw,
   InputMw,
   NotSupportedMw,
 ];
@@ -73,7 +74,7 @@ render(
 );
 `;
 
-const IndexPage: NextPage = () => {
+const GridPage: NextPage = () => {
   return (
     <Layout>
       <DemoForm code={code} />
@@ -81,4 +82,4 @@ const IndexPage: NextPage = () => {
   );
 };
 
-export default IndexPage;
+export default GridPage;

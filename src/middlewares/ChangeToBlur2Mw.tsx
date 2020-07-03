@@ -1,8 +1,8 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import { FormMiddlewareProps } from '../core';
+import { MiddlewareProps } from '../core';
 
-export class ChangeToBlur2Mw extends React.Component<FormMiddlewareProps> {
+export class ChangeToBlur2Mw extends React.Component<MiddlewareProps> {
   state = { value: this.props.data };
   element: Element | null | Text = null;
   focus = false;

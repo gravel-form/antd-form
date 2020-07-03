@@ -1,9 +1,9 @@
 import * as React from 'react';
 import get from 'lodash/get';
 import { Switch } from 'antd';
-import { AntdFormMiddlewareProps } from '../share';
+import { MiddlewareProps } from '../share';
 
-export const SwitchMw: React.FC<AntdFormMiddlewareProps> = (props) => {
+export const SwitchMw: React.FC<MiddlewareProps> = (props) => {
   const { schema, onChange, data, next, extraProps } = props;
   if (typeof schema === 'boolean' || schema.type !== 'boolean') return next(props);
 

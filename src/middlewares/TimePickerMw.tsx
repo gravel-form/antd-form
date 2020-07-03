@@ -1,10 +1,10 @@
 import * as React from 'react';
 import get from 'lodash/get';
 import { TimePicker } from 'antd';
-import { AntdFormMiddlewareProps } from '../share';
+import { MiddlewareProps } from '../share';
 import moment from 'moment';
 
-export const TimePickerMw: React.ComponentType<AntdFormMiddlewareProps> = (props) => {
+export const TimePickerMw: React.ComponentType<MiddlewareProps> = (props) => {
   const { next, schema, data, onChange, extraProps } = props;
 
   if (typeof schema === 'boolean' || schema.type !== 'string') return next(props);

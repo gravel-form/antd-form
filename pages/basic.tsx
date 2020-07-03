@@ -4,7 +4,15 @@ import { NextPage } from 'next';
 
 import DemoForm from '../components/DemoForm';
 
-const code = `const schema = {
+const code = `const {
+  ExtraPropsMw,
+  LocalRefMw,
+  FixedObjectMw,
+  FixedArrayMw,
+  withName,
+} = GravelRc;
+
+const schema = {
   title: 'A registration form',
   description: 'A simple form example.',
   type: 'object',
@@ -57,7 +65,7 @@ const code = `const schema = {
     },
     term: {
       type: 'boolean',
-      title: 'Accept',
+      title: 'Accept terms and conditions',
     },
   },
 };
@@ -84,7 +92,10 @@ const extraProps = {
     },
     dof: {
       component: 'DatePicker',
-    }
+    },
+    term: {
+      formItem: {label: null},
+    },
   },
 };
 
@@ -100,19 +111,17 @@ const middlewares = [
   ColMw,
   FieldsetTemplateMw,
   RowMw,
-  FormItemTemplateMw,
   ...schemaMws,
+  FormItemTemplateMw,
 
-  ...withName([
-    ['DatePicker', DatePickerMw],
-    ['Password', PasswordMw],
-    ['RadioGroup', RadioGroupMw],
-    ['Rate', RateMw],
-    ['Slider', SliderMw],
-    ['Switch', SwitchMw],
-    ['TextArea', TextAreaMw],
-    ['TimePicker', TimePickerMw],
-  ]),
+  withName(DatePickerMw, 'DatePicker'),
+  withName(PasswordMw, 'Password'),
+  withName(RadioGroupMw, 'RadioGroup'),
+  withName(RateMw, 'Rate'),
+  withName(SliderMw, 'Slider'),
+  withName(SwitchMw, 'Switch'),
+  withName(TextAreaMw, 'TextArea'),
+  withName(TimePickerMw, 'TimePicker'),
 
   CheckboxGroupMw,
   CheckboxMw,
@@ -133,7 +142,7 @@ render(
 );
 `;
 
-const IndexPage: NextPage = () => {
+const BasicPage: NextPage = () => {
   return (
     <Layout>
       <DemoForm code={code} />
@@ -141,4 +150,4 @@ const IndexPage: NextPage = () => {
   );
 };
 
-export default IndexPage;
+export default BasicPage;

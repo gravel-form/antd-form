@@ -1,9 +1,9 @@
 import * as React from 'react';
 import get from 'lodash/get';
 import { Select } from 'antd';
-import { AntdFormMiddlewareProps } from '../share';
+import { MiddlewareProps } from '../share';
 
-export const SelectMw: React.ComponentType<AntdFormMiddlewareProps> = (props) => {
+export const SelectMw: React.ComponentType<MiddlewareProps> = (props) => {
   const { schema, data: value, onChange, next, extraProps } = props;
   if (
     typeof schema === 'boolean' ||

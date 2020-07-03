@@ -1,8 +1,13 @@
-import { FormProps as AntdFP } from 'antd/lib/form';
+import { FormProps as AntdFormProps } from 'antd/lib/form';
 import Ajv from 'ajv';
 import { JSONSchema7 } from 'json-schema';
 
-import { FormMiddlewareProps, FormProps } from './core';
+import {
+  MiddlewareProps as CoreMiddlewareProps,
+  FormProps as CoreFormProps,
+  ExtraPropsMiddlewareProps,
+  ExtraPropsFormProps,
+} from './core';
 
 export type ErrorObject = Ajv.ErrorObject;
 
@@ -19,16 +24,16 @@ export function validate(schema: JSONSchema7, data: any) {
   return ajv.errors;
 }
 
-export interface AntdFormProps
-  extends FormProps,
-    Pick<AntdFP, 'colon' | 'hideRequiredMark' | 'labelAlign' | 'labelCol' | 'layout' | 'name' | 'size'> {
+export interface FormProps
+  extends CoreFormProps,
+    ExtraPropsFormProps,
+    Pick<AntdFormProps, 'colon' | 'hideRequiredMark' | 'labelAlign' | 'labelCol' | 'layout' | 'name' | 'size'> {
   onSubmit?: (data: unknown) => void;
   extraProps?: unknown;
   defaultData?: unknown;
 }
 
-export interface AntdFormMiddlewareProps extends FormMiddlewareProps {
-  formProps: AntdFormProps;
+export interface MiddlewareProps extends CoreMiddlewareProps<FormProps>, ExtraPropsMiddlewareProps<FormProps> {
   errors?: ErrorObject[];
   extraProps?: unknown;
   onSubmit?: (data: unknown) => void;

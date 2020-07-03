@@ -11,7 +11,7 @@ const DemoForm: React.FC<{ code: string; scope?: { [key: string]: any } | React.
       code={code}
       scope={{
         ...omit(require('../src'), 'default'),
-        GravelFormCore: require('../src/core'),
+        GravelRc: require('../src/core'),
         FormDataViewerMw,
         Ajv: require('ajv'),
         Antd: require('antd'),

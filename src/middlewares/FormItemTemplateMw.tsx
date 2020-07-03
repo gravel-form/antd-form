@@ -1,10 +1,11 @@
 import * as React from 'react';
+import get from 'lodash/get';
 import { toJSONSchemaPath, isRequired } from '../core';
-import { AntdFormMiddlewareProps } from '../share';
+import { MiddlewareProps } from '../share';
 import { Form } from 'antd';
 
-export const FormItemTemplateBaseMw: React.ComponentType<AntdFormMiddlewareProps> = (props) => {
-  const { schema, dataPath, next, errors } = props;
+export const FormItemTemplateMw: React.ComponentType<MiddlewareProps> = (props) => {
+  const { schema, dataPath, next, errors, extraProps } = props;
 
   if (typeof schema === 'boolean') return next(props);
 
@@ -19,23 +20,11 @@ export const FormItemTemplateBaseMw: React.ComponentType<AntdFormMiddlewareProps
       validateStatus={error ? 'error' : ''}
       hasFeedback
       required={isRequired(props)}
+      {...get(extraProps, 'formItem')}
     >
       {next(props)}
     </Form.Item>
   );
-};
-
-export const FormItemTemplateMw: React.ComponentType<AntdFormMiddlewareProps> = (props) => {
-  const { schema, parent, next } = props;
-  if (
-    typeof schema === 'boolean' ||
-    schema.type === 'object' ||
-    schema.type === 'array' ||
-    (parent && typeof parent.schema !== 'boolean' && parent.schema.type === 'array')
-  )
-    return next(props);
-
-  return <FormItemTemplateBaseMw {...props} />;
 };
 
 export default FormItemTemplateMw;

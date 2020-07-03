@@ -1,10 +1,8 @@
 export * from './share';
 export { default as Form } from './Form';
-export * from './core';
 export * from './preset';
 export * from './middlewares/DatePickerMw';
 export * from './middlewares/TimePickerMw';
-export * from './middlewares/ExtraPropsMw';
 export * from './middlewares/FormItemTemplateMw';
 export * from './middlewares/LiveValidateMw';
 export * from './middlewares/ErrorListMw';

@@ -1,9 +1,9 @@
 import * as React from 'react';
 import get from 'lodash/get';
 import { Radio } from 'antd';
-import { AntdFormMiddlewareProps } from '../share';
+import { MiddlewareProps } from '../share';
 
-export const RadioGroupMw: React.FC<AntdFormMiddlewareProps> = (props) => {
+export const RadioGroupMw: React.FC<MiddlewareProps> = (props) => {
   const { schema, onChange, data, extraProps, next } = props;
   if (typeof schema === 'boolean' || !schema.enum) return next(props);
 

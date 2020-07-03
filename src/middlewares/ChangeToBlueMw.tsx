@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { FormMiddlewareProps } from '../core';
+import { MiddlewareProps } from '../core';
 
-export const ChangeToBlurMw: React.ComponentType<FormMiddlewareProps> = (props) => {
+export const ChangeToBlurMw: React.ComponentType<MiddlewareProps> = (props) => {
   const { schema, next, data, onChange } = props;
   const focus = React.useRef(false);
   const [value, setValue] = React.useState<unknown>(null);

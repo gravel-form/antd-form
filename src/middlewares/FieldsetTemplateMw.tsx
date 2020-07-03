@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { FormMiddlewareProps } from '../core';
+import { MiddlewareProps } from '../core';
 import { Typography } from 'antd';
 const { Text } = Typography;
 
-export const FieldsetTemplateMw: React.ComponentType<FormMiddlewareProps> = (props) => {
+export const FieldsetTemplateMw: React.ComponentType<MiddlewareProps> = (props) => {
   const { schema, next } = props;
 
   if (typeof schema === 'boolean' || !(schema.type === 'object' || schema.type === 'array')) return next(props);
@@ -12,9 +12,11 @@ export const FieldsetTemplateMw: React.ComponentType<FormMiddlewareProps> = (pro
   return (
     <fieldset>
       {title && <legend>{title}</legend>}
-      <div>
-        <Text type="secondary">{schema.description && schema.description}</Text>
-      </div>
+      {schema.description && (
+        <div>
+          <Text type="secondary">{schema.description}</Text>
+        </div>
+      )}
       {next(props)}
     </fieldset>
   );

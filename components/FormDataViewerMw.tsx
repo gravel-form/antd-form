@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Affix, Input, Tooltip } from 'antd';
-import { AntdFormMiddlewareProps } from '../src';
+import { MiddlewareProps } from '../src';
 import { InfoCircleOutlined } from '@ant-design/icons';
 
 const JsonEditor: React.FC<{ value: any; onChange?: any }> = ({ value, onChange }) => {
@@ -27,7 +27,7 @@ const JsonEditor: React.FC<{ value: any; onChange?: any }> = ({ value, onChange 
   );
 };
 
-export const FormDataViewerMw: React.ComponentType<AntdFormMiddlewareProps> = (props) => {
+export const FormDataViewerMw: React.ComponentType<MiddlewareProps> = (props) => {
   const { data, parent, onChange, next } = props;
   const [container, setContainer] = React.useState<HTMLElement | null>(null);
   React.useEffect(() => {

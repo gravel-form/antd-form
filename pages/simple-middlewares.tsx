@@ -3,7 +3,8 @@ import Layout from '../layouts/main';
 import { NextPage } from 'next';
 import DemoForm from '../components/DemoForm';
 
-const code = `const { Button, message, Form: AntdForm, Tooltip } = Antd;
+const code = `const { isRequired } = GravelRc;
+const { Button, message, Form: AntdForm, Tooltip } = Antd;
 const { InfoCircleOutlined } = AntdIcons;
 const Promise = Bluebird;
 
@@ -14,11 +15,11 @@ const MyButtonsMw = (props) => {
     onChange,
     formProps: { defaultData },
   } = props;
+  const [submitting, setSubmitting] = React.useState(false);
 
   // if not on the root node, pass the control to the next middleware
   if (parent) return next(props);
 
-  const [submitting, setSubmitting] = React.useState(false);
   const handleSubmit = async function() {
     setSubmitting(true);
     await Promise.delay(1000);
