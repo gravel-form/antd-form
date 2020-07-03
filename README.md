@@ -86,7 +86,6 @@ If you want to define you own middlewares, following props are you can consume o
 | schemaPath          | A array of string or number indecating the current location in the root form data                                                          | (string &#124; number)[]                                                      |
 | MiddlewareComponent | A composed react component of the `formProps.middlewares`, you may want to invoke it when designing a custom object/array middleware.      | React.ComponentType&lt;AntdFormMiddlewareProps&gt;                            |
 | formProps           | The root form props.                                                                                                                       | AntdFormProps                                                                 |
-| localRefs           | A map between local `$id` and schema for `$ref` field. Provided and consumed by `LocalRefMw`                                               | {[key:string]:{schema: JSONSchema7Definition, path:(string &#124; number)[]}} |
 | errors              | A list of json schema validation erros. Provided by `LiveValidationMw` or `SubmitButtonWithValidationMw`, consumed by `FormItemTemplateMw` | Ajv.ErrorObject[]                                                             |
 | extraProps          | See following section for details                                                                                                          | any                                                                           |
 
@@ -102,6 +101,7 @@ The shap of the `extraProps` depends on the middlewares consuming it. If you are
 | row        | `RowMw`                                       | props forwared to ant design `Row` component                                                                |
 | col        | `ColMw`                                       | props forwared to ant design `Col` component                                                                |
 | labels     | `SelectMw`, `RadioGroupMw`, `CheckboxGroupMw` | to display a different text on the UI instead of the enum value                                             |
+| formItem   | `FormItemTemplateMw`                          | props forwared to ant design `Form.Item` component                                                          |
 | props      | Any form controls                             | props forwared to ant design `Col` component                                                                |
 
 <details>
